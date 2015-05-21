@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dclap="http://schema.dariah.eu/colreg/dclap/" xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:cld="http://purl.org/cld/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mods="http://www.loc.gov/mods/v3" xmlns:dcldf="http://purl.org/cld/freq"
+    xmlns:vcard="http://www.w3.org/2006/vcard/"
+    targetNamespace="http://schema.dariah.eu/colreg/dclap/" elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+
+<!--
+        NOTE: "source="DCLAP Data Model" is a placeholder for an upcoming online-documentation of the DCLAP Data Model
+        NOTE: The prefix dclap: is considered as a working title and stands for Dariah Collection Application Profile    
+-->
+    <xs:annotation>
+        <xs:documentation xml:lang="en">
+            Definition: A XML-Schema for collection descriptions. 
+            Principles: As strict as possible. Avoiding dependencies through importing other XML-Schemas
+            History: Based on the Dublin Core Collection Application Profile; the DARIAH-DE Collection Registry (GUI) and an internal DARIAH-DE paper/wiki-page "DARIAH-DE Collection Level Description Application
+            Profile" 
+            Creators: Peter Andorfer and David Maus
+        </xs:documentation>
+    </xs:annotation>
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+        schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+
+    <xs:element name="CollectionDescription">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: Root element of the collection description
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:COLLECTION" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!--
+    #############################################################
+    #                    ELEMENT-DEFINITIONS                    #
+    #############################################################
+-->
+    
+    <xs:element name="COLLECTION">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Collection">
+                Definition:	An aggregation of resources.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Collection">
+                Comment: A collection is described as a group; its parts may also be separately described.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:title" minOccurs="1"/>
+                <xs:element ref="dclap:identifier" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:landingpage" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dclap:collectionType" minOccurs="1"/>
+                <xs:element ref="dclap:description" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:acronym" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:extent" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:language" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:itemType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:rights" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:accessRights" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:accrualMethod" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:accrualPeriodicity" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:accrualPolicy" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:provenance" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:audience" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:subject" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:spatial" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:temporal" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:dateCollectionCreated" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:dateItemsCreated" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:creator" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:owner" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:isLocatedAt" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:isAccessedVia" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:hasPartOf" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:isPartOf" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:metadataEncodingScheme" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:itemEncodingScheme" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AGENT" type="dclap:AGENT">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/Agent">
+                Definition: A resource that acts or has the power to act.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/Agent">
+                Comment: Examples of Agent include person, organization, and software agent.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="SERVICE" type="dclap:SERVICE">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Service">
+                Definition:	A system that provides one or more functions.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Service">
+                Comment: Examples include a photocopying service, interlibrary loans, a reading room, a metadata harvesting protocoll (OAI-PMH), an OPAC, a GND-Beacon, etc.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="LOCATION" type="dclap:LOCATION">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/Location">
+                Definition:	A spatial region or named place.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+   
+    <!--
+    #############################################################
+    #                    ELEMENT-DEFINITIONS                    #
+    #############################################################
+-->
+    
+    <xs:element name="title" type="dclap:simpleLiteral">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/title">
+                Definition: A name given to the resource.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/title">
+                Comment: Typically, a Title will be a name by which the resource is formally known.
+            </xs:documentation>                    
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="identifier" type="dclap:identifier">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/identifier">
+                Definition: An unambiguous reference to the resource within a given context.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/identifier">
+                Comment: Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. 
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="landingpage" type="xs:anyURI">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: URL to a webpage of the collection.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="collectionType" type="dclap:typeValues">
+        <xs:annotation>
+            <xs:documentation source="http://purl.org/dc/elements/1.1/type">
+                Definition: The nature or genre of the resource.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="description" type="dclap:simpleLiteral">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/description">
+                Definition: An account of the resource.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/description">
+                Comment: Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="acronym" type="dclap:simpleLiteral">  
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Defintion: An acronym of the collection.  
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="extent" type="dclap:simpleLiteral">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/extent">
+                Definition: The size or duration of the resource.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="language" type="dclap:languageValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/language">
+                Definition: A language of the resource.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="itemType" type="dclap:itemTypeValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/cld/terms/itemType">
+                Definition: The nature or genre of the content of one or more items within the collection.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="http://dublincore.org/documents/dcmi-type-vocabulary/#H7">
+                Comment: Use of standard vocabulary required. Values taken from DCMI Type Vocabulary
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="rights" type="dclap:rigthsValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/rights">
+                Definition: Information about rights held in and over the resource.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="https://dev2.dariah.eu/wiki/x/cg9FAg">
+                Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="accessRights" type="dclap:accessRightsValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/accessRights">
+                Definition: Information about who can access the resource or an indication of its security status.
+            </xs:documentation>
+            <xs:documentation xml:lang="de" source="DCLAP Data Model">
+                Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions. 
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="accrualMethod" type="dclap:simpleLiteral">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/accrualMethod">
+                Definition: The method by which items are added to a collection.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="accrualPeriodicity" type="dclap:accrualPeriodicityValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="The frequency with which items are added to a collection.">
+                Definition: The frequency with which items are added to a collection.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="accrualPolicy" type="dclap:simpleLiteral">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/accrualPolicy">
+                Definition: The policy governing the addition of items to a collection.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="provenance" type="dclap:simpleLiteral">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/provenance">
+                Definition: A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/provenance">
+                Comment:The statement may include a description of any changes successive custodians made to the resource.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="audience" type="dclap:simpleLiteral">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/audience">
+                Definition: A class of entity for whom the resource is intended or useful.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="subject">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/subject">
+                Definition:The topic of the resource.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: The subject has to be taken either from GND, DCC or LCSH.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:subjectValue" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                            Definition: Contains the code, signiture, URI, etc. matching the chosen encodingScheme-attribute.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="dclap:label">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                            Definition: Provides a human readable text of the chosen subject.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="spatial">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/spatial">
+                Definition: Spatial characteristics of the resource.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: Local entities should be linked either to GeoNames or Getty Thesaurus of Geographic Names and a human readable label should be provided.  
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:spatialValue" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:label" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="temporal">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/temporal">
+                Definition: Temporal characteristics of the resource.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: Dates must following provided formatting rules. A human readable label can be added. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:temporalValue" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:label" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence> 
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dateCollectionCreated">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/created">
+                Definition: Date of creation of the resource.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: Date must follow provided formatting rules. A human readable label can be added.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:temporalValue" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:label" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence> 
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dateItemsCreated">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/cld/terms/dateItemsCreated">
+                Definition: A range of dates over which the individual items within the collection were created.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: Dates must following provided formatting rules. A human readable label can be added. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:temporalValue" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:label" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence> 
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="creator">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/creator">
+                Definition: An entity primarily responsible for making the resource.</xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: A wrapper class for describing an AGENT. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:AGENT" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="owner">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: An AGENT who owns the collection.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: A wrapper class for describing an AGENT. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:AGENT" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="isLocatedAt">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/cld/terms/isLocatedAt">
+                Definition: A location where the collection is held.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: A wrapper class for describing a LOCATION.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:LOCATION" minOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="isAccessedVia">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/cld/terms/isAccessedVia">
+                Definition: A service that provides access to the items within the collection.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: A wrapper class for describing a SERVICE.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:SERVICE" minOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hasPartOf">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/hasPart">
+                Definition:A related resource [Collection] that is included either physically or logically in the described resource.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: A wrapper class for describing a COLLECTION.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:COLLECTION"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="isPartOf">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/isPartOf">
+                Definition: A related resource [Collection] in which the described resource is physically or logically included.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: A wrapper class for describing a COLLECTION.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:COLLECTION"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="metadataEncodingScheme" type="xs:string">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: Encoding scheme for provided metadata of the collection´s objects.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="itemEncodingScheme" type="xs:string">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: Encding scheme used for modelling the collection´s objects. 
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="spatialValue">
+        <xs:complexType mixed="true">
+            <xs:attribute name="vocabularyEncodingScheme" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="TGN">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/TGN">
+                                    Definition:	The set of places specified by the Getty Thesaurus of Geographic Names.  
+                                </xs:documentation>
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/TGN">
+                                    See: http://www.getty.edu/research/tools/vocabulary/tgn/index.html
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GeoNames">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    Definition:	The set of places specified by GeoNames geographical database.
+                                </xs:documentation>
+                                <xs:documentation xml:lang="en">
+                                    See: http://www.geonames.org/
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GND">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    Definition:	The set of places specified by the Deutschen Nationalbibliothek.
+                                </xs:documentation>
+                                <xs:documentation xml:lang="en">
+                                    See: https://portal.dnb.de
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="subjectValue">
+        <xs:complexType mixed="true">
+            <xs:attribute name="vocabularyEncodingScheme" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <!-- dmaus: Evtl. hier die DDC-Version noch angeben (e.g. DDC22) -->
+                        <xs:enumeration value="DDC">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/DDC">
+                                    Definition:	The set of conceptual resources specified by the Dewey Decimal Classification.
+                                </xs:documentation>
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/DD">
+                                    See: http://www.oclc.org/dewey/
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="LCC">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/LCC">
+                                    Definition:	The set of conceptual resources specified by the Library of Congress Classification.   
+                                </xs:documentation>
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/LCC">
+                                    See: http://lcweb.loc.gov/catdir/cpso/lcco/lcco.html  
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GND">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    Definition: The set of conceptual resources specified by the Deutschen Nationalbibliothek.
+                                </xs:documentation>
+                                <xs:documentation xml:lang="en" source="http://www.dnb.de/gnd">
+                                    See: http://www.dnb.de/gnd
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="temporalValue" type="dclap:timeSpan"/>
+    <xs:element name="label">
+        <xs:complexType mixed="true">
+            <xs:attribute ref="xml:lang"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="adress">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: Contains information related to a post address. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:street" minOccurs="0"/>                    
+                <xs:element ref="dclap:houseNumber" minOccurs="0"/>
+                <xs:element ref="dclap:postalCode" minOccurs="0"/>
+                <xs:element ref="dclap:place" minOccurs="0"/>
+                <xs:element ref="dclap:country" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="name" type="xs:string">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: The name of the described entity (e.g. a person or an organisation).
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: Should contain a person´s last or family name (surname) or the name of the described organisation.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="street" type="xs:string">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: The street´s name of post adress.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="houseNumber" type="xs:string">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: The house number of the agent´s post adress.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="postalCode" type="xs:string">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: The postal code of the agent´s post adress. 
+            </xs:documentation>
+            <xs:documentation>
+                Comment: No use of country prefixes foreseen, e.g. use 38304 instead of D-38304.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="place">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: Holds information related to the place (city). 
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: The place should be linked to some normdata and provided with a human readable label. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:spatial"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="country">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: Holds information related to the country. 
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: The place should be linked to some normdata and provided with a human readable label. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:spatial"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="agentType" type="dclap:agentTypeValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/type">
+                Definition: The nature or genre of the resource.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: Use of standard vocabulary required. The provided values are 'person' and 'organisation'
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="serviceAccessMethod" type="dclap:servicaAccessMethodValues"/>
+    <xs:element name="serviceFunction" type="dclap:serviceFunctionValues"/>
+    <xs:element name="serviceURL" type="xs:anyURI"/>
+    <xs:element name="subset" type="xs:string"/>
+    <xs:element name="schemaID" type="xs:string"/>
+    <xs:element name="serviceInterface" type="xs:anyURI"/>
+    <xs:element name="serviceHelpURL" type="xs:anyURI"/>
+    <xs:element name="accessControl" type="dclap:accessRightsValues"/>
+    <xs:element name="consultant" type="dclap:AGENT"/>
+    <!--
+    #############################################################
+    #                    Type-DEFINITIONS                       #
+    #############################################################
+-->
+    <xs:complexType name="SERVICE">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: Datatype for the dclap:SERVICE-Element.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="dclap:title" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="dclap:identifier" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:acronym" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dclap:serviceAccessMethod" minOccurs="1"/>
+            <xs:element ref="dclap:serviceFunction" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:serviceURL" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:subset" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:schemaID" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dclap:serviceInterface" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dclap:serviceHelpURL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dclap:accessControl" minOccurs="1"/>
+            <xs:element ref="dclap:consultant" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LOCATION">
+        <xs:annotation>
+            <xs:documentation>Definition: Datatype for the dclap:LOCATION-Element.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="dclap:name" minOccurs="1"/>
+            <xs:element ref="dclap:spatial" minOccurs="1"/>
+            <xs:element ref="dclap:identifier" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:adress" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AGENT">
+        <xs:sequence>
+            <xs:element ref="dclap:agentType" minOccurs="1"/>
+            <xs:element ref="dclap:name" minOccurs="1"/>
+            <xs:element name="firstName" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                        Definition: The first name of a person.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                        Comment: Only used for persons.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="dclap:identifier" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:adress" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="webpage" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="tel" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="identifier">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="vocabularyEncodingScheme" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="GND"/>
+                            <xs:enumeration value="other"/>
+                            <xs:enumeration value="none"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:simpleType name="accrualPeriodicityValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">
+                Fixed vocabulary provided by DARIAH-DE. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ongoing"/>
+            <xs:enumeration value="finalized/stable"/>
+            <xs:enumeration value="regularly"/>
+            <xs:enumeration value="irregularly"/>
+            <xs:enumeration value="periodical"/>
+            <xs:enumeration value="daily"/>
+            <xs:enumeration value="weekly"/>
+            <xs:enumeration value="monthly"/>
+            <xs:enumeration value="quarterly"/>
+            <xs:enumeration value="biannual"/>
+            <xs:enumeration value="annual"/>
+            <xs:enumeration value="not specified"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="simpleLiteral">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://dublincore.org/schemas/xmls/qdc/dc.xsd">
+                Definition: A complexType which permits mixed content and makes the xml:lang attribute available.It disallows child elements.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent mixed="true">
+            <xs:restriction base="xs:anyType">
+                <xs:sequence>
+                    <xs:any processContents="lax" minOccurs="0" maxOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute ref="xml:lang" use="optional"/>
+            </xs:restriction>
+        </xs:complexContent> 
+    </xs:complexType>
+    <xs:simpleType name="serviceFunctionValues">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="READ"/>
+            <xs:enumeration value="WRITE"/>
+            <xs:enumeration value="READ and WRITE"/>
+            <xs:enumeration value="INgEST"/>
+            <xs:enumeration value="CRUD"/>
+            <xs:enumeration value="other"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="servicaAccessMethodValues">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OAI-PMH"/>
+            <xs:enumeration value="OAI-ORE"/>
+            <xs:enumeration value="Atom Syndication Format"/>
+            <xs:enumeration value="Canocical Text Services"/>
+            <xs:enumeration value="RESTful API"/>
+            <xs:enumeration value="SKOS/RDF"/>
+            <xs:enumeration value="other"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="locationTypeValues">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="location"/>
+<!-- hier sollten doch noch mehr Werte zur Auswahl stehen, nachschauen in der 'Dokumentation' und in der CR-GUI            -->
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="agentTypeValues">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="person"/>
+            <xs:enumeration value="organisation"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="periodeValues">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[\d{,4}][-\d\d]+[-\d\d]+(/|--)[\d{,4}][-\d\d]+[-\d\d]+"/>
+            <xs:pattern value="[\d{,4}][-\d\d]+[-\d\d]+"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="spatialValues">
+        <!-- dmaus: Keine separaten Elemente, sondern Attribut "encodingScheme" -->
+        <!-- dmaus: Attribut ist optional, wenn nicht verwendet dann Freitext -->
+        <!-- dmaus: Notwendigkeit eines Label ist zu diskutieren -->
+        <xs:sequence>
+            <xs:element name="geonames" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="geonames-id" type="xs:token" maxOccurs="1">
+<!-- besteht die Geonames-ID nur als Zahlen bzw. kann als Datentyp xs:int festegelgt werden?    -->
+                        </xs:element>
+                        <xs:element name="label" type="dclap:simpleLiteral" minOccurs="1"
+                            maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Definition: Name of the Place in plain text</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getty" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="getty-id" type="xs:token" maxOccurs="1">
+ <!-- besteht die Getty-ID nur als Zahlen bzw. kann als Datentyp xs:int festegelgt werden?    -->
+                        </xs:element>
+                        <xs:element name="label" type="dclap:simpleLiteral">
+                            <xs:annotation>
+                                <xs:documentation>Definition: Name of the Place in plain text</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="accessRightsValues">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="free"/>
+            <xs:enumeration value="free but registration needed"/>
+            <xs:enumeration value="paid collection, but free samples/free preview"/>
+            <xs:enumeration value="paid content"/>
+            <xs:enumeration value="paywall"/>
+            <xs:enumeration value="not specified"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="rigthsValues">
+        <xs:restriction base="xs:string">
+            <xs:annotation>
+                <xs:documentation xml:lang="en" source="https://dev2.dariah.eu/wiki/x/cg9FAg">
+                    Fixed vocabulary provided by DARIAH-DE.
+                </xs:documentation>
+            </xs:annotation>
+<!-- for content -->
+            <xs:enumeration value="Attribution v1.0(CC BY)"/>
+            <xs:enumeration value="Attribution Share Alike v1.0(CC BY-SA)"/>
+            <xs:enumeration value="Attribution No Derivatives v1.0(CC BY-ND)"/>
+            <xs:enumeration value="Attribution Non-Commercial Share Alike v1.0(CC BY-NC-SA)"/>
+            <xs:enumeration value="Attribution Non-Commercial No Derivatives v1.0(CC BY-NC-ND)"/>
+            <xs:enumeration value="Attribution v2.0(CC BY)"/>
+            <xs:enumeration value="Attribution Share Alike v2.0(CC BY-SA)"/>
+            <xs:enumeration value="Attribution No Derivatives v2.0(CC BY-ND)"/>
+            <xs:enumeration value="Attribution Non-Commercial v2.0(CC BY-NC)"/>
+            <xs:enumeration value="Attribution Non-Commercial Share Alike v2.0(CC BY-NC-SA)"/>
+            <xs:enumeration value="Attribution Non-Commercial No Derivatives v2.0(CC BY-NC-ND)"/>
+            <xs:enumeration value="Attribution v2.5(CC BY)"/>
+            <xs:enumeration value="Attribution Share Alike v2.5(CC BY-SA)"/>
+            <xs:enumeration value="Attribution No Derivatives v2.5(CC BY-ND)"/>
+            <xs:enumeration value="Attribution Non-Commercial v2.5(CC BY-NC)"/>
+            <xs:enumeration value="Attribution Non-Commercial Share Alike v2.5(CC BY-NC-SA)"/>
+            <xs:enumeration value="Attribution Non-Commercial No Derivatives v2.5(CC BY-NC-ND)"/>
+            <xs:enumeration value="Attribution v3.0(CC BY)"/>
+            <xs:enumeration value="Attribution Share Alike v3.0(CC BY-SA)"/>
+            <xs:enumeration value="Attribution No Derivatives v3.0(CC BY-ND)"/>
+            <xs:enumeration value="Attribution Non-Commercial v3.0(CC BY-NC)"/>
+            <xs:enumeration value="Attribution Non-Commercial Share Alike v3.0(CC BY-NC-SA)"/>
+            <xs:enumeration value="Attribution Non-Commercial No Derivatives v3.0(CC BY-NC-ND)"/>
+            <xs:enumeration value="Design Science Licence (DSL)"/>
+            <xs:enumeration value="Europeana: Rights Reserved - Free Access"/>
+            <xs:enumeration value="Free Art License 1.3 (FAL 1.3)"/>
+            <xs:enumeration value="Free Art License 1.3 (FAL 1.2)"/>
+            <xs:enumeration value="Open Data Commons Attribution Licence v1.0(ODC-By)"/>
+            <xs:enumeration value="Open Data Commons Open Database Licence v1.0(ODC-ODbL)"/>
+            <xs:enumeration value="Open Data Commons Database Contents Licence v1.0(ODC-DbCL)"/>
+            <xs:enumeration value="Open Government Licence for public sector information"/>
+            <xs:enumeration value="Non-Commercial Government Licence"/>
+            <xs:enumeration value="CC0"/>
+            <xs:enumeration value="CC Public Domain Mark"/>
+            <xs:enumeration value="Open Data Commons Public Domain Dedication and Licence (PDDL)"/>
+            <xs:enumeration value="ODC Attribution-Sharealike Community Norms"/>
+<!-- for code -->
+            <xs:enumeration value="Apache License, 2.0 (Apache-2.0)"/>
+            <xs:enumeration value="BSD 2-Clause 'Simplified' or 'FreeBSD' license (BSD-2-Clause)"/>
+            <xs:enumeration value="BSD 3-Clause 'New' or 'Revised' license (BSD-3-Clause)"/>
+            <xs:enumeration value="GNU General Public License (GPL)"/>
+            <xs:enumeration value="GNU Library or 'Lesser' General Public License (LGPL)"/>
+            <xs:enumeration value="MIT license (MIT)"/>
+            <xs:enumeration value="Mozilla Public License 2.0 (MPL-2.0)"/>
+            <xs:enumeration value="Common Development and Distribution License (CDDL-1.0)"/>
+            <xs:enumeration value="Eclipse Public License (EPL-1.0)"/>
+<!-- special interests -->
+            <xs:enumeration value="Educational Community License, Version 2.0 (ECL-2.0)"/>
+            <xs:enumeration value="IPA Font License (IPA)"/>
+            <xs:enumeration value="Open Font License 1.1 (OFL-1.1)"/>
+<!-- for documentations -->
+            <xs:enumeration value="GNU Free Documentation License v1.3(FDL)"/>
+            <xs:enumeration value="GNU Free Documentation License v1.2(FDL)"/>
+            <xs:enumeration value="GNU Free Documentation License v1.1(FDL)"/>
+<!-- if nothing fits-->
+            <xs:enumeration value="other"/>            
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="itemTypeValueAttribut">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://dublincore.org/documents/dcmi-type-vocabulary/#H7">
+                Values taken from DCMI Type Vocabulary
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Collection">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Collection">
+                        Definition: An aggregation of resources.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Collection">
+                        Comment: A collection is described as a group; its parts may also be separately described..
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Dataset">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Dataset">
+                        Definition: Data encoded in a defined structure.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Dataset">
+                        Comment: Examples include lists, tables, and databases. A dataset may be useful for direct machine processing.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Event">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Event">
+                        Definition: A non-persistent, time-based occurrence.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Event">
+                        Metadata for an event provides descriptive information that is the basis for discovery of the purpose, location, duration, and responsible agents associated with an event. Examples include an exhibition, webcast, conference, workshop, open day, performance, battle, trial, wedding, tea party, conflagration.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Image">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Image">
+                        Definition: A visual representation other than text.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Image">
+                        Comment: Examples include images and photographs of physical objects, paintings, prints, drawings, other images and graphics, animations and moving pictures, film, diagrams, maps, musical notation. Note that Image may include both electronic and physical representations.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="InteractiveResource">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/InteractiveResource">
+                        Definition: A resource requiring interaction from the user to be understood, executed, or experienced.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/InteractiveResource">
+                        Comment: Examples include forms on Web pages, applets, multimedia learning objects, chat services, or virtual reality environments.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MovingImage">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/MovingImage">
+                        A series of visual representations imparting an impression of motion when shown in succession.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/MovingImage">
+                        Examples include animations, movies, television programs, videos, zoetropes, or visual output from a simulation. Instances of the type Moving Image must also be describable as instances of the broader type Image.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PhysicalObject">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/PhysicalObject">
+                        Definition: An inanimate, three-dimensional object or substance.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/PhysicalObject">
+                        Comment: Note that digital representations of, or surrogates for, these objects should use Image, Text or one of the other types.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Service">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Service">
+                        Definition: A system that provides one or more functions.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Service">
+                        Comment: Examples include a photocopying service, a banking service, an authentication service, interlibrary loans, a Z39.50 or Web server.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Software">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Software">
+                       Definition: A computer program in source or compiled form.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Software">
+                        Commenti: Examples include a C source file, MS-Windows .exe executable, or Perl script.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Sound">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Sound">
+                        Definition:	A resource primarily intended to be heard.</xs:documentation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Sound">
+                        Comment: Examples include a music playback file format, an audio compact disc, and recorded speech or sounds.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="StillImage">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/StillImage">
+                        Definition:	A static visual representation.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/StillImage">
+                        Comment: Examples include paintings, drawings, graphic designs, plans and maps. Recommended best practice is to assign the type Text to images of textual materials. Instances of the type Still Image must also be describable as instances of the broader type Image.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Text">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Text">
+                       Definition: A resource consisting primarily of words for reading.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Text">
+                        Comment: Examples include books, letters, dissertations, poems, newspapers, articles, archives of mailing lists. Note that facsimiles or images of texts are still of the genre Text.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="itemTypeValues">
+        <xs:simpleContent>
+            <xs:extension base="dclap:itemTypeValueAttribut">
+                <xs:attribute name="encoding-scheme" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="DCMITypeValues"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:simpleType name="languageValuesType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-z][a-z][a-z]"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- dmaus: Warum nicht xsd:language -->
+    <xs:complexType name="languageValues">
+        <xs:simpleContent>
+            <xs:extension base="dclap:languageValuesType">
+                <!-- dmaus: besser "encodingScheme" -->
+                <xs:attribute name="encoding-scheme" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="dcterms:ISO639-2"/>
+                            <xs:enumeration value="dcterms:ISO639-3"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:simpleType name="typeValues">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Collection"/>
+            <!--    Siehe dazu R.4.3.2        -->
+            <xs:enumeration value="HoldingCollection"/>
+            <xs:enumeration value="ReferentialCollection"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="timeSpan">
+        <xs:simpleContent>
+            <xs:extension base="dclap:periodeValues">
+                <xs:attribute name="encodingScheme" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="ISO8601"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>
