@@ -14,7 +14,7 @@
     <xs:annotation>
         <xs:documentation xml:lang="en">
             Definition: A XML-Schema for collection descriptions. 
-            Principles: As strict as possible. Avoiding dependencies through importing other XML-Schemas
+            Principles: As strict as possible. Avoiding dependencies by avoiding the import of other XML-Schemas.
             History: Based on the Dublin Core Collection Application Profile; the DARIAH-DE Collection Registry (GUI) and an internal DARIAH-DE paper/wiki-page "DARIAH-DE Collection Level Description Application
             Profile" 
             Creators: Peter Andorfer and David Maus
