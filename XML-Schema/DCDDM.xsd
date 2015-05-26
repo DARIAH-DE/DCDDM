@@ -55,14 +55,15 @@
             <xs:sequence>
                 <xs:element ref="dclap:title" minOccurs="1"/>
                 <xs:element ref="dclap:identifier" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:landingpage" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dclap:landingPage" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="dclap:collectionType" minOccurs="1"/>
                 <xs:element ref="dclap:description" minOccurs="1" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:acronym" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dclap:extent" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:size" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:language" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:itemType" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:rights" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:collectionDescriptionRights" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:itemsRights" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:accessRights" minOccurs="1" maxOccurs="1"/>
                 <xs:element ref="dclap:accrualMethod" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:accrualPeriodicity" minOccurs="0" maxOccurs="unbounded"/>
@@ -148,14 +149,14 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="landingpage" type="xs:anyURI">
+    <xs:element name="landingPage" type="xs:anyURI">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Definition: URL to a webpage of the collection.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="collectionType" type="dclap:typeValues">
+    <xs:element name="collectionType" type="dclap:collectionTypeValues">
         <xs:annotation>
             <xs:documentation source="http://purl.org/dc/elements/1.1/type">
                 Definition: The nature or genre of the resource.
@@ -167,11 +168,13 @@
     </xs:element>
     <xs:element name="description" type="dclap:simpleLiteral">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/description">
-                Definition: An account of the resource.
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsabstract">
+                Definition: A free text summary description of the collection.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/description">
-                Comment: Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsabstract">
+                Comment: A value string must be provided.              
+                To record descriptions in multiple languages, use multiple statements and in each statement associate the value string with the appropriate language tag.
+                Although a description might contain detailed subject-specific information, at least part of the description should be understandable by an end-user with no specialist knowledge of the subject area.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
@@ -182,7 +185,7 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="extent" type="dclap:simpleLiteral">
+    <xs:element name="size" type="dclap:simpleLiteral">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/extent">
                 Definition: The size of the collection.
@@ -206,10 +209,20 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="rights" type="dclap:rigthsValues">
+    <xs:element name="collectionDescriptionRights" type="dclap:rigthsValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/rights">
-                Definition: Information about rights held in and over the resource.
+                Definition: A statement of any rights held in/over the collection description.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="https://dev2.dariah.eu/wiki/x/cg9FAg">
+                Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="itemsRights" type="dclap:rigthsValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/rights">
+                Definition: A statement of any rights held in/over the collection´s items.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="https://dev2.dariah.eu/wiki/x/cg9FAg">
                 Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions.
@@ -226,7 +239,7 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="accrualMethod" type="dclap:simpleLiteral">
+    <xs:element name="accrualMethod" type="dclap:accrualMethodsValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/accrualMethod">
                 Definition: The method by which items are added to a collection.
@@ -832,6 +845,57 @@
             </xs:element>
         </xs:sequence>
     </xs:complexType>
+    <xs:simpleType name="accrualMethodsValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/accrual-method/">
+                Definition: A set of methods by which items are added to a collection.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="deposit">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/cld/accmeth/deposit">
+                        Definition: The permanent addition of items to the collection, where the transfer of ownership is conditional on certain requirements or restrictions, but without financial payment or reciprocal transfer of items.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="donation">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/cld/accmeth/donation">
+                        Definition: The permanent addition of items to the collection through the transfer of ownership, without financial payment.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="purchase">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/cld/accmeth/purchase">
+                        Definition: The permanent addition of items to the collection through the transfer of ownership, accompanied by one or more financial payments.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="loan">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/cld/accmeth/loan">
+                        Definition: The temporary addition of items to the collection with no transfer of ownership, without financial payment.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="license">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/cld/accmeth/license">
+                        Definition: The temporary addition of items to the collection with no transfer of ownership, accompanied by one or more financial payments.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="itemcreation">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://purl.org/cld/accmeth/itemcreation">
+                        Definition: The permanent addition of items to the collection as a result of item creation by the owner of the collection [or by any other agent related to the collection].
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
     <xs:simpleType name="accessRightsValues">
         <xs:restriction base="xs:string">
             <xs:enumeration value="free"/>
@@ -1051,26 +1115,25 @@
     </xs:complexType>
     <xs:simpleType name="languageValuesType">
         <xs:restriction base="xs:string">
-            <xs:pattern value="[a-z][a-z][a-z]"/>
+            <xs:pattern value="[a-z][a-z][a-z]?"/>
         </xs:restriction>
     </xs:simpleType>
     <!-- dmaus: Warum nicht xsd:language -->
     <xs:complexType name="languageValues">
         <xs:simpleContent>
             <xs:extension base="dclap:languageValuesType">
-                <!-- dmaus: besser "encodingScheme" -->
-                <xs:attribute name="encoding-scheme" use="required">
+                <xs:attribute name="isoStandard" use="required">
                     <xs:simpleType>
                         <xs:restriction base="xs:string">
-                            <xs:enumeration value="dcterms:ISO639-2"/>
-                            <xs:enumeration value="dcterms:ISO639-3"/>
+                            <xs:enumeration value="ISO639-1"/>
+                            <xs:enumeration value="ISO639-3"/>
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    <xs:simpleType name="typeValues">
+    <xs:simpleType name="collectionTypeValues">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Collection"/>
             <!--    Siehe dazu R.4.3.2        -->

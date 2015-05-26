@@ -1,0 +1,918 @@
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>DARIAH Collection Description Data Model (DCDDM)</title>
+                <author>Peter Andorfer</author>
+            </titleStmt>
+            <editionStmt>
+                <edition><date>2015-05-21T13:35:48.702000000</date></edition>
+            </editionStmt>
+            <publicationStmt>
+                <p>no publication statement available</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Written by OpenOffice</p>
+                <p>transformed from. odt to xml/tei using <ref target="http://oxgarage.oucs.ox.ac.uk:8080/ege-webclient/">OxGarage Conversion</ref></p>
+            </sourceDesc>
+        </fileDesc>
+        <revisionDesc>
+            <change>
+                <date>2015-05-26T14:02:25.873000000</date>
+            </change>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <p rend="bold">DARIAH Collection Description Data Model (DCDDM)</p>
+            <p>Peter Andorfer (Herzog August Bibliothek)</p>
+            <p rend="center italic">“Sorry for my bad English,</p>
+            <p rend="center italic">but my German is even worse”<note xml:id="ftn1" place="foot"
+                    n="1">Ja, Panik, Trouble, auf: DMD KIU LIDT, Staatsakt, rough
+                trade:2011.</note></p>
+            <div type="div1" rend="P100">
+                <head><anchor type="bookmark-start" xml:id="id___RefHeading__712_135821912"
+                        />Abstract<ptr type="bookmark-end" target="#id___RefHeading__712_135821912"
+                    /></head>
+                <p>This paper specifies a data model for collection descriptions. The <hi
+                        rend="bold">D</hi>ARIAH <hi rend="bold">C</hi>ollection <hi rend="bold"
+                        >D</hi>escription <hi rend="bold">D</hi>ata <hi rend="bold">M</hi>odel
+                    (DCDDM) is meant for creating descriptions of pyhsical (or analogue) AND digital
+                    collections which can be read of humans as well as machines. Concerning content
+                    and textual structure, this paper relies heavily on the Dublin Core Collections
+                    Application Profile (DCCAP).<note xml:id="ftn2" place="foot" n="2">Dublin Core
+                        Collection Description Task Group, “Dublin Core Collections Application
+                        Profile” (Dublin Core Collection Description Task Group, March 9, 2007),
+                        http://dublincore.org/groups/collections/collection-application-profile/.</note></p>
+            </div>
+            <div type="div1" rend="P101">
+                <head><anchor type="bookmark-start" xml:id="id___RefHeading__3494_1121708392"
+                    />Introduction and design principles<ptr type="bookmark-end"
+                        target="#id___RefHeading__3494_1121708392"/></head>
+                <p>The DARIAH Collection Description Data Model (DCDDM) specifies a fixed number of
+                    classes, elements, attributes and values used for describing collections. The
+                    term “collection” is understood as it is defined by Dublin Core. A collection is
+                    “an aggregation of resources”.<note xml:id="ftn3" place="foot" n="3">
+                        <ptr target="http://purl.org/dc/dcmitype/Collection"/>
+                    </note> Those resource can be digital objects, like digitized paintings, books,
+                    manuscripts, as well as “born-digital” objects like records of metada,
+                    database-entries, or transcripts. But those resources can also be physical
+                    objects like paintings, books, statues, stamps, coins, etc. </p>
+                <p>It is worth to mention, that the answer to the question what precisely the
+                    collection´s resources are, is not always as simple as it might look. Let´s take
+                    for instance a collection of early printed books where the book´s metada are
+                    collected and made public by an “Online Public Access Catalogue” (OPAC). Am I
+                    describing a collection of (physical) books or the matching collection of
+                    metadata (author, year of publication, number of pages, signature, …)? Or do I
+                    describe the books through describing the OPAC? The answer to this questions
+                    influences the information the collection descriptions contains. In the example
+                    of the early printed books I would most likely be more interested in the dates
+                    when the books were created as in the date of creation of the metadata records.
+                    On the other hand I may want to allow potential users of my collection to
+                    harvest the books metadata. But therefore I have to offer different
+                    information(e.g. the date when the metadata records have been created) than a
+                    description of the collection of the books.</p>
+                <p>It is also worth mentioning that a collection descriptions is based on
+                    information and that the process of gathering those information can be at least
+                    very time consuming. Therefore the level of detail of a collection description
+                    depends heavily on the descriptor´s effort. But the level of detail of a
+                    collection description also depends as well on the collection and its resource.
+                    A prestigious collection of early modern books may justify a very detailed
+                    description whereas a collection of notes and annotations made while writing a
+                    small article may be sufficiently described by providing only a small set of
+                    information. </p>
+                <p>Thirdly, the DCDDM is meant to be used a data model for applications dealing with
+                    the creation, publication and administration of collection description (e.g. the
+                    DARIAH-DE Collection Registry). Likewise the DCDDM should provide sufficient
+                    guidelines to create collection descriptions without the need of any tool or
+                    applications. </p>
+                <p>Given this broad definition of collection and the therefore very many possible
+                    varieties of collections, the DCDDM has to achieve the following objectives:</p>
+                <list type="ordered">
+                    <item>The data model should allow descriptions of digital AND physical
+                        collections. </item>
+                    <item>The description should offer general descriptive information concerning
+                        the content of the collection or the collection´s items, like the </item>
+                </list>
+                <list type="unordered">
+                    <item><list type="unordered">
+                            <item>topics/subjects which are covered by the collection;</item>
+                            <item>locations and regions the content of the collection could be
+                                associated with;</item>
+                            <item>dates and periods the collection may be related to.</item>
+                        </list></item>
+                </list>
+                <list type="ordered">
+                    <item>The data model should make an unambiguous identification of the described
+                        collection possible. </item>
+                    <item>The data model should allow to contextualize a collection and to
+                        relationships as:</item>
+                </list>
+                <list type="unordered">
+                    <item><list type="unordered">
+                            <item>between collections to other collections like being part of
+                                another collection or containing other collections;</item>
+                            <item>between collections and agents who interact with the collection
+                                like owning or curating a collection;</item>
+                            <item>between collections and locations, meaning that a collection might
+                                be situated in one ore many locations;</item>
+                            <item>between collections and service through which the collection´s
+                                items may be accessed or described. </item>
+                        </list></item>
+                </list>
+                <list type="ordered">
+                    <item>Collection descriptions based on the DCDDM should encourage the
+                        exploration and usage of the described collection. Therefore the description
+                        should provide administrative information about</item>
+                </list>
+                <list type="unordered">
+                    <item><list type="unordered">
+                            <item>the possibilities of how to access the collection or the
+                                collection´s items;</item>
+                            <item>possible legal restrictions concerning the possibilities to access
+                                the collection an (re)using the collection´s items.</item>
+                        </list></item>
+                </list>
+                <list type="ordered">
+                    <item>If collections are made accessible online, technical metadata could be
+                        provided so that other services may gain access to the collection´s objects
+                        or the object´s metadata. </item>
+                    <item>To avoid ambiguity the data model encourages the use of controlled
+                        vocabulary and normdata, unique identifiers, and syntax encoding schemes but
+                        to ensure human readability of the collection description the data models
+                        provides label-elements. </item>
+                </list>
+                <list type="unordered">
+                    <item><list type="unordered">
+                            <item>To facilitate mappings and transformations of already existing
+                                collection descriptions to collection descriptions based on the
+                                DCDDM, DCDDM supports several controlled vocabularies and encoding
+                                schemes (in fully awareness of the downsides of such a policy).
+                            </item>
+                        </list></item>
+                </list>
+                <list type="ordered">
+                    <item>The data model should enable multilingual descriptions in a flexible but
+                        still practical way. This means the describing person can chooses which
+                        information in which languages he/she provides. To achieve this requirement,
+                        those elements provinding information in form of natural language and free
+                        text may be reused as often as needed to provide multilingual collection
+                        descriptions.</item>
+                    <item>The data model has to be flexible enough to describe well curated
+                        collections held in museums, libraries, archives, etc. as well es less
+                        professional ones like files collected on personal hard drives while
+                        conducting a research project. To archive this requirement, the number of
+                        mandatory elements is kept as low as possible. </item>
+                    <item>To achieve a high and widespread acceptance the data model should allow at
+                        least one easy to produce, read and understand serialization like a
+                        csv-table or a hierarchically as flat as possible XML-file, validated by a
+                        matching XML-Schema.</item>
+                    <item>To ease interoperability and to reveal semantic closeness to well known an
+                        extensively used metadata records (e.g. Dublin Core) the names and
+                        definitions of as many classes, elements and attributes should be taken from
+                        well established ones. But to avoid any (technical) dependencies, those
+                        names, definitions and specification won´t be just referenced through simply
+                        providing quotes or links to the referenced elements but will also be
+                        written down in this document. </item>
+                    <item>The DCDDM wishes to be an easy to use, but nevertheless functional and
+                        therefore widely accepted data model for collection descriptions. To acchive
+                        this goal the model has be extensively tested an evaluated in the wild. At
+                        the moment of writing this specification of the DCDDM, the model is mainly
+                        the result of a more theoretical discussion. This means that the model
+                        described in the paper has to be understood as an invitation to the
+                        interested community to use it, test it but most and for all to criticize
+                        it.</item>
+                </list>
+            </div>
+            <div type="div1" rend="P102">
+                <head><anchor type="bookmark-start" xml:id="id___RefHeading__714_135821912"/>Classes
+                    and Elements<ptr type="bookmark-end" target="#id___RefHeading__714_135821912"
+                    /></head>
+                <p>The DCDDM defines four different classes. Following the terminology defined by
+                    the DCMI Abstract Model, a “class” is understood as “A group containing members
+                    that have attributes, behaviors, relationships or semantics in common; a kind of
+                        category.”<note xml:id="ftn4" place="foot" n="4">Andy Powell et al., <hi
+                            rend="italic">DCMI Abstract Model</hi>, June 4, 2007,
+                        http://dublincore.org/documents/abstract-model/.</note> The four classes
+                    refer to the real world concepts collection, agent, location, and service, and
+                    are defined through certain numbers of mandatory and optional elements. The name
+                    of classes are written in capital letters and provided with the prefix dcddm:,
+                    e.g. dcddm:COLLECTION. </p>
+                <p>A basic entity-relational model, based on the entity-relational model presented
+                    in the Dublin Core Application Profile defines the possible relationships of
+                    those four entities dcddm:COLLECTION, dcddm:AGENT, dcddm:LOCATION, and
+                    dcddm:SERVICE.</p>
+                <p><figure>
+                        <graphic url="Pictures/100000000000047F0000031547E59796.jpg"/>
+                        <head>Abbildung 1: Simple entity-relational model</head>
+                    </figure>For a more specific description of the possible relations please
+                    consult the matching class descriptions.</p>
+                <div type="div2" rend="P105">
+                    <head><anchor type="bookmark-start" xml:id="id___RefHeading__716_135821912"
+                            />dcddm:COLLECTION<ptr type="bookmark-end"
+                            target="#id___RefHeading__716_135821912"/></head>
+                    <p>As stated in the DCCAP a dcddm:COLLECTION is defined as “an aggregation of
+                        items” which is “described as a group”. To describe this resource the DCDDM
+                        defines the following <hi rend="background-color(#ffff00)">XX</hi> elements. </p>
+                    <p>When describing a collection it is recommend to follow the order presented in
+                        this document. The name of elements are written in small caps and provided
+                        with the prefix dcddm:, e.g., dcddm:title. </p>
+                    <p>If the element name is made up of a compound of two or more words, the name
+                        is written in camelcase with a small cap first letter, e.g.: dcddm:<hi
+                            rend="color(#000000)">accumulationDateRange. </hi></p>
+                    <p><hi rend="color(#000000)">Note: Passages in </hi><hi
+                            rend="color(#000000)italic">italics</hi><hi rend="color(#000000)"> are
+                            direct quotes from DCCAP. </hi></p>
+                    <div type="div3" rend="P106">
+                        <head><anchor type="bookmark-start" xml:id="id___RefHeading__718_135821912"
+                                />dcddm:title<ptr type="bookmark-end"
+                                target="#id___RefHeading__718_135821912"/></head>
+                        <table rend="frame" xml:id="Tabelle1">
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell rend="justify italic">A name given to the resource.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">See</cell>
+                                <cell rend="justify">http://purl.org/dc/elements/1.1/title</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment</cell>
+                                <cell><p rend="justify italic">A value string must be
+                                        provided.</p><p rend="justify">The use of a <hi rend="bold"
+                                            >language attribute</hi> is recommended.</p><p
+                                        rend="justify italic">To record titles in multiple
+                                        languages, use multiple statements and in each statement
+                                        associate the value string with the appropriate language
+                                        tag.</p><p rend="justify italic">Where an existing name is
+                                        used, the value string should preserve the original wording,
+                                        order and spelling of an existing name. Punctuation need not
+                                        reflect the usage of the original. Subtitles should be
+                                        separated from the title by a sequence of space-colon-space,
+                                        for example:</p><p rend="justify italic">Voices from the
+                                        Dust Bowl: The Charles L. Todd and Robert Sonkin Migrant
+                                        Worker Collection</p><p rend="justify"><hi
+                                            rend="color(#000000)">The usage of several different
+                                            languages in one </hi><hi rend="color(#000000)"
+                                            >title</hi><hi rend="color(#000000)"> element should be
+                                            avoided if possible.</hi></p><p
+                                        rend="justify color(#000000)">The useage of two title
+                                        elements containing the same language is not recommended.
+                                    </p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Value</cell>
+                                <cell rend="justify">string</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Obligation</cell>
+                                <cell>M1+</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Examples:</cell>
+                                <cell><p rend="justify"><hi rend="color(#000000)bold">Don´t:</hi><hi
+                                            rend="color(#000000)"> </hi><hi rend="color(#000000)"
+                                            >International Dunhuang Project. Die Seidenstraße
+                                            online</hi></p><p rend="justify bold"><hi
+                                            rend="color(#000000)">Do: </hi><hi rend="color(#000000)"
+                                            >Internationales Dunhuang Projekt: Die Seidenstraße
+                                            online</hi></p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">As XML<note xml:id="ftn5" place="foot" n="5">
+                                        Be aware to escape any characters which might interfere with
+                                        the XML syntax (e.g. use<hi rend="italic"> &amp;amp;</hi>
+                                        instead of <hi rend="italic">&amp; </hi> or<hi rend="italic"
+                                            >&amp;lt;</hi> and <hi rend="italic">&amp;gt;</hi>
+                                        instead of <hi rend="italic">&lt;</hi> and <hi rend="italic"
+                                            >&gt;.</hi>)</note></cell>
+                                <cell>&lt;dcddm:title xml:lang=”deu”&gt;<hi rend="color(#000000)"
+                                        >Internationales Dunhuang Projekt: Die Seidenstraße
+                                        online&lt;/dcddm:title&gt;</hi></cell>
+                            </row>
+                        </table>
+                    </div>
+                    <div type="div3" rend="P110">
+                        <head><anchor type="bookmark-start" xml:id="id___RefHeading__724_129713347"
+                                />dcddm:identifier<ptr type="bookmark-end"
+                                target="#id___RefHeading__724_129713347"/></head>
+                        <table rend="frame" xml:id="Tabelle3">
+                            <row>
+                                <cell rend="justify">Condition</cell>
+                                <cell>Only if used in application which create their own
+                                    identifieres. Otherwise this element should not be used</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">See</cell>
+                                <cell>http://purl.org/dc/elements/1.1/identifier</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell rend="justify italic">An unambiguous reference to the resource
+                                    within a given context.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment</cell>
+                                <cell><p rend="justify italic"><hi rend="color(#000000)">A
+                                            collection identifier </hi><hi rend="color(#000000)"
+                                            >should</hi><hi rend="color(#000000)"> be a URI, using a
+                                            URI scheme that has been registered with
+                                        IANA.</hi></p><p rend="justify color(#000000)italic">The URI
+                                        of the collection should be used as the resource URI of the
+                                        description and also as the value string in a statement
+                                        using the dc:identifier property.</p><p
+                                        rend="justify color(#000000)italic">If multiple URIs are
+                                        assigned to a collection, one of the URIs should be used as
+                                        the resource URI, and each URI, including the resource URI,
+                                        should be used as the value string in a separate statement
+                                        using the dc:identifier property.</p><p rend="justify"><hi
+                                            rend="color(#000000)">If the </hi><hi
+                                            rend="color(#000000)">DCDDM is used in applications
+                                            which help creating collection descriptions </hi><hi
+                                            rend="color(#000000)">(i.e. DARIAH-DE Collection
+                                            Registry), the </hi><hi rend="color(#000000)"
+                                            >application</hi><hi rend="color(#000000)"> has to
+                                            provide a valid URI. </hi></p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Value</cell>
+                                <cell><p rend="justify italic">String</p><p rend="justify">Syntax
+                                        Encoding Scheme(s): URI</p></cell>
+                            </row>
+                            <row>
+                                <cell rows="2" rend="justify">Obligation</cell>
+                                <cell>M1</cell>
+                            </row>
+                            <row>
+                                <cell>Only if used in applications/databases using their own
+                                    identifieres. Otherwise this element should not be used</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Examples:</cell>
+                                <cell><p rend="justify"><hi rend="color(#000000)bold">Don´t:</hi><hi
+                                            rend="color(#000000)"> </hi><hi rend="color(#000000)"
+                                            >123</hi></p><p rend="justify bold"><hi
+                                            rend="color(#000000)">Do: </hi><hi rend="color(#000000)"
+                                            >https://www.uri-to-my-collection</hi><hi
+                                            rend="color(#000000)">descriptionapp</hi><hi
+                                            rend="color(#000000)">/</hi><hi rend="color(#000000)"
+                                            >123</hi></p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">As XML</cell>
+                                <cell><hi rend="color(#000000)"
+                                        >&lt;dcddm:identifier&gt;http://idp.bbaw.de</hi><hi
+                                        rend="color(#000000)">&lt;/dcddm:identifier&gt;</hi></cell>
+                            </row>
+                        </table>
+                    </div>
+                    <div type="div3" rend="P111">
+                        <head><anchor type="bookmark-start" xml:id="id___RefHeading__746_135821912"
+                                />dcddm:providedIdentifier<ptr type="bookmark-end"
+                                target="#id___RefHeading__746_135821912"/></head>
+                        <table rend="frame" xml:id="Tabelle2">
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell rend="justify">An unambiguous reference to the resource within
+                                    an already existing context like an institution or an
+                                    application. </cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment</cell>
+                                <cell rend="justify"><hi rend="color(#000000)">I</hi><hi
+                                        rend="color(#000000)">n case your collection is already
+                                        supplied with </hi><hi rend="color(#000000)">one ore more
+                                        </hi><hi rend="color(#000000)">identifier</hi><hi
+                                        rend="color(#000000)">s</hi><hi rend="color(#000000)"
+                                        > </hi><hi rend="color(#000000)">which you would like
+                                        </hi><hi rend="color(#000000)">keep on using </hi><hi
+                                        rend="color(#000000)">to maintain
+                                    interoperability.</hi></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Value</cell>
+                                <cell rend="justify">String</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Obligation</cell>
+                                <cell>O+</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Example (as XML)</cell>
+                                <cell><p><hi rend="color(#000000)"
+                                            >&lt;dcddm:providedIdentifier&gt;</hi><ref
+                                            target="http://idp.bbaw.de/">http://idp.bbaw.de</ref><hi
+                                            rend="color(#000000)">&lt;/dcddm:pro</hi><hi
+                                            rend="color(#000000)">v</hi><hi rend="color(#000000)"
+                                            >idedIdentifier</hi><hi rend="color(#000000)"
+                                        >&gt;</hi></p><p><hi rend="color(#000000)"
+                                            >&lt;dcddm:providedIdentifier&gt;</hi><hi
+                                            rend="color(#000000)">123xyz:23</hi><hi
+                                            rend="color(#000000)"
+                                            >&lt;/dcddm:providedIdentifier&gt;</hi></p></cell>
+                            </row>
+                        </table>
+                    </div>
+                    <div type="div3" rend="P112">
+                        <head><anchor type="bookmark-start" xml:id="id___RefHeading__841_129713347"
+                                />dcddm:landingPage<ptr type="bookmark-end"
+                                target="#id___RefHeading__841_129713347"/></head>
+                        <table rend="frame" xml:id="Tabelle4">
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell rend="justify">An URL to the collection´s web page or to a web
+                                    page providing any further information on the collection.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment</cell>
+                                <cell rend="justify">If the collection´s website is part of a bigger
+                                    project, the URI should not adress the project´s but the
+                                    collection´s entry page. </cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Value</cell>
+                                <cell rend="justify">URI</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Obligation</cell>
+                                <cell rend="justify">O1</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Example</cell>
+                                <cell><p rend="justify bold">Don´t: <ptr
+                                            target="http://www.die-fruchtbringende-gesellschaft.de/"
+                                        />
+                                    </p><p rend="start bold">Do: <ptr
+                                            target="http://www.die-fruchtbringende-gesellschaft.de/index.php?category_id=4&amp;article_id=15"
+                                        /></p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">As XML</cell>
+                                <cell rend="justify">&lt;dcddm:landinPpage&gt;<ref
+                                        target="http://www.die-fruchtbringende-gesellschaft.de/index.php?category_id=4&amp;amp;article_id=15"
+                                        >http://www.die-fruchtbringende-gesellschaft.de/index.php?category_id=4</ref><ref
+                                        target="http://www.die-fruchtbringende-gesellschaft.de/index.php?category_id=4&amp;amp;article_id=15"
+                                            ><hi rend="bold">&amp;amp;</hi></ref><ref
+                                        target="http://www.die-fruchtbringende-gesellschaft.de/index.php?category_id=4&amp;amp;article_id=15"
+                                        >article_id=15</ref>&lt;/dcddm:landingPage&gt;</cell>
+                            </row>
+                        </table>
+                    </div>
+                    <div type="div3" rend="P113">
+                        <head><anchor type="bookmark-start" xml:id="id___RefHeading__843_129713347"
+                                />dcddm:collectionType<ptr type="bookmark-end"
+                                target="#id___RefHeading__843_129713347"/></head>
+                        <table rend="frame" xml:id="Tabelle5">
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell rend="justify"><hi rend="italic">The nature or genre of
+                                        the</hi> collection.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">See</cell>
+                                <cell rend="justify">http://purl.org/dc/elements/1.1/type</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment</cell>
+                                <cell rend="color(#000000)">Use of standard vocabulary required.
+                                    Provided values are based on DARIAH-DE suggestions.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Value</cell>
+                                <cell><p rend="justify">String</p><p rend="justify">Fixed
+                                        vocabulary: dcddm:collectionTypeValues</p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Obligation</cell>
+                                <cell rend="justify">M1</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Default</cell>
+                                <cell rend="justify">Collection</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Example(as XML)</cell>
+                                <cell rend="justify"
+                                    >&lt;dcddm:collectionType&gt;Collection&lt;/dcddm:collectionType&gt;</cell>
+                            </row>
+                        </table>
+                    </div>
+                    <div type="div3" rend="P114">
+                        <head><anchor type="bookmark-start" xml:id="id___RefHeading__845_129713347"
+                                />dcddm:description<ptr type="bookmark-end"
+                                target="#id___RefHeading__845_129713347"/></head>
+                        <table rend="frame" xml:id="Tabelle6">
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell rend="justify italic">A free text summary description of the
+                                    collection.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">See</cell>
+                                <cell rend="justify"
+                                    >http://dublincore.org/groups/collections/collection-application-profile/#coldctermsabstract</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment</cell>
+                                <cell><p rend="justify italic">A value string must be provided.
+                                        </p><p rend="justify italic">To record descriptions in
+                                        multiple languages, use multiple statements and in each
+                                        statement associate the value string with the appropriate
+                                        language tag.</p><p rend="justify italic">Although a
+                                        description might contain detailed subject-specific
+                                        information, at least part of the description should be
+                                        understandable by an end-user with no specialist knowledge
+                                        of the subject area.</p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Value</cell>
+                                <cell rend="justify italic">String</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Obligation</cell>
+                                <cell>M+</cell>
+                            </row>
+                            <row>
+                                <cell>Example (as XML)</cell>
+                                <cell>&lt;dcddm:description&gt;Das Internationale Dunhuang Projekt
+                                    ist ein bahnbrechendes internationales Kooperationsprojekt mit
+                                    dem Ziel, Informationen und Bilder aller Manuskripte, Gemälde,
+                                    Textilien und Artefakte aus Dunhuang und anderen Fundstätten an
+                                    der Seidenstraße frei im Internet verfügbar zu machen und ihre
+                                    Nutzung durch Bildungs- und Forschungsprogramme zu
+                                    fördern.&lt;/dcddm:dscription&gt;</cell>
+                            </row>
+                        </table>
+                    </div>
+                    <div type="div3" rend="P114">
+                        <head><anchor type="bookmark-start" xml:id="id___RefHeading__847_129713347"
+                                />dcddm:acronym<ptr type="bookmark-end"
+                                target="#id___RefHeading__847_129713347"/></head>
+                        <table rend="frame" xml:id="Tabelle7">
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell rend="color(#000000)">An acronym of the collection.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment</cell>
+                                <cell>In case the collection is well known by or often associated
+                                    with an acronym. E.g. “Marx-Engels-Gesamtausgabe” or
+                                    “MEGA”</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Value</cell>
+                                <cell>String</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Obligation</cell>
+                                <cell>O1</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Example (as XML)</cell>
+                                <cell>&lt;dcddm:acronym&gt;MEAG&lt;/dcddm&gt;</cell>
+                            </row>
+                        </table>
+                    </div>
+                    <div type="div3" rend="P115">
+                        <head><anchor type="bookmark-start" xml:id="id___RefHeading__3579_129713347"
+                                />dcddm:size<ptr type="bookmark-end"
+                                target="#id___RefHeading__3579_129713347"/></head>
+                        <table rend="frame" xml:id="Tabelle8">
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell><hi rend="color(#000000)italic">The size of the
+                                        collection</hi><hi rend="color(#000000)"> i. e. the number
+                                        of items.</hi></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">See</cell>
+                                <cell><ptr
+                                        target="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsextent"
+                                    /></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment</cell>
+                                <cell>The size or extent of the collection should be described by
+                                    providing the number of the collection`s items. If the exact
+                                    number is unknown or the collection is still growing a rough
+                                    estimation should be provided.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Value</cell>
+                                <cell>Integer</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Obligation</cell>
+                                <cell>O1</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Example (as XML)</cell>
+                                <cell>&lt;dcddm:size&gt;12345&lt;/dcddm:size&gt;</cell>
+                            </row>
+                        </table>
+                    </div>
+                    <div type="div3" rend="P116">
+                        <head><anchor type="bookmark-start" xml:id="id___RefHeading__1239_286741148"
+                                />dcddm:language<ptr type="bookmark-end"
+                                target="#id___RefHeading__1239_286741148"/></head>
+                        <table rend="frame" xml:id="Tabelle9">
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell rend="color(#000000)italic">A language of the items in the
+                                    collection.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">See</cell>
+                                <cell rend="italic"><ptr
+                                        target="http://dublincore.org/groups/collections/collection-application-profile/#coldclanguage"
+                                    />
+                                </cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment</cell>
+                                <cell><p><hi rend="italic">A value string must be provided; The
+                                            value string should be a language name in the form of
+                                            the three character code defined by</hi> ISO
+                                        639-3.</p><p>To facilitate mappings and transformations of
+                                        already existing collection descriptions the use of the two
+                                        character code defined by ISO 639-1 is possible but ISO
+                                        639-3 is the recommended standard.</p><p rend="italic">Where
+                                        the collection covers multiple languages, a separate
+                                        statement should be used for each language.</p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Value</cell>
+                                <cell><p>String</p><p>Syntax Encoding Scheme: <hi rend="bold"
+                                            >dcddm:</hi><hi rend="color(#000000)bold"
+                                            >languageValuesType</hi></p><p>Controlled Vocabulary:
+                                        ISO639-1 or ISO639-3</p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Attribute</cell>
+                                <cell><p rend="color(#000000)">Attribute: isoStandard</p><p
+                                        rend="color(#000000)">Value(s): ISO639-1 or ISO639-3</p><p
+                                        rend="color(#000000)">Usage: mandatory </p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Obligation</cell>
+                                <cell rend="color(#000000)">O+</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Example (as XML)</cell>
+                                <cell><p rend="color(#000000)">&lt;dcddm:language
+                                        isoStandard=”ISO639-3”&gt;deu&lt;/dcddm:language&gt;</p><p
+                                        rend="color(#000000)">&lt;dcddm:language
+                                        isoStandard=”ISO639-3”&gt;eng&lt;/dcddm:language&gt;</p></cell>
+                            </row>
+                        </table>
+                    </div>
+                    <div type="div3" rend="P117">
+                        <head>dcddm:itemType</head>
+                        <table rend="frame" xml:id="Tabelle10">
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell rend="color(#000000)italic">The nature or genre of one or more
+                                    items within the collection.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">See:</cell>
+                                <cell rend="color(#000000)"><ptr
+                                        target="http://dublincore.org/groups/collections/collection-application-profile/#colclditemType"
+                                    /></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment:</cell>
+                                <cell><p rend="color(#000000)">The value strings are provided by
+                                        DCMI Type Vocabulary. See: <ptr
+                                            target="http://dublincore.org/documents/dcmi-type-vocabulary/#H7"
+                                        /></p><p rend="color(#000000)italic">Where the collection
+                                        includes items of multiple types,the significance of each
+                                        dcddm:itemType for the collection is expressed through the
+                                        order of the elements beginning with the most important
+                                        one.</p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Value</cell>
+                                <cell><p rend="color(#000000)">String</p><p rend="color(#000000)"
+                                        >Controlled Vocabulary: <hi rend="bold"
+                                            >dcddm:itemTypeValues</hi></p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Obligation</cell>
+                                <cell rend="color(#000000)">O+</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Example (as XML)</cell>
+                                <cell><p rend="color(#000000)"
+                                        >&lt;dcddm:itemType&gt;Image&lt;/dcddm:itemType&gt;</p><p
+                                        rend="color(#000000)">&lt;dcddm:itemType&gt;Physical
+                                        Object&lt;/dcddm:itemType&gt;</p><p rend="color(#000000)"
+                                        >&lt;dcddm:itemType&gt;Text&lt;/dcddm:itemType&gt;</p></cell>
+                            </row>
+                        </table>
+                    </div>
+                    <div type="div3" rend="P118">
+                        <head>dcddm:collectionDescriptionRights</head>
+                        <table rend="frame" xml:id="Tabelle11">
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell rend="color(#000000)italic">A statement of any rights held
+                                    in/over the collection description.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">See</cell>
+                                <cell rend="color(#000000)italic"><ptr
+                                        target="http://dublincore.org/groups/collections/collection-application-profile/#coldcrights"
+                                    />
+                                </cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment</cell>
+                                <cell><p rend="justify color(#000000)">Provides information
+                                        concerning the collection description and NOT the items of
+                                        the collections. </p><p rend="justify color(#000000)">The
+                                        value strings are provided and maintained by
+                                    DARIAH-DE.</p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Value</cell>
+                                <cell><p rend="justify color(#000000)">String</p><p
+                                        rend="justify color(#000000)">Controlled Vocabulary: <hi
+                                            rend="bold">dcddm:rightsValues</hi></p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Obligation </cell>
+                                <cell rend="justify color(#000000)">O1</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Example (as XML)</cell>
+                                <cell rend="justify color(#000000)"
+                                    >&lt;dcddm:collectionDescriptionRigths&gt;Attribution
+                                    Non-Commercial Share Alike v1.0(CC
+                                    BY-NC-SA)&lt;/dcddm:rights&gt;</cell>
+                            </row>
+                        </table>
+                    </div>
+                    <div type="div3" rend="P119">
+                        <head>dcddm:itemRights</head>
+                        <table rend="frame" xml:id="Tabelle12">
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell rend="color(#000000)italic">A statement of any rights held
+                                    in/over the collection´s items.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">See</cell>
+                                <cell rend="color(#000000)italic"><ptr
+                                        target="http://dublincore.org/groups/collections/collection-application-profile/#coldcrights"
+                                    />
+                                </cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment</cell>
+                                <cell><p rend="justify color(#000000)">Provides information
+                                        concerning the collection´s items. </p><p
+                                        rend="justify color(#000000)italic">Where the collection
+                                        includes items with different rights, use several
+                                        dcddm:itemRights statements. The significance of each dcddm:
+                                        itemRights is expressed through the order of the elements
+                                        beginning with the most important one.</p><p
+                                        rend="justify color(#000000)">Use of standard vocabulary
+                                        required. Provided values are based on DARIAH-DE suggestions
+                                        and maintained by DARIAH-DE.</p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Value</cell>
+                                <cell><p rend="justify color(#000000)">String</p><p
+                                        rend="justify color(#000000)">Controlled Vocabulary: <hi
+                                            rend="bold">dcddm:rightsValues</hi></p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Obligation </cell>
+                                <cell rend="justify color(#000000)">O+</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Example (as XML)</cell>
+                                <cell><p rend="start color(#000000)"
+                                        >&lt;dcddm:itemRights&gt;Attribution v1.0(CC
+                                        BY)&lt;/dcddm:itemRights&gt;</p><p
+                                        rend="justify color(#000000)"
+                                        >&lt;dcddm:rigths&gt;Attribution Non-Commercial Share Alike
+                                        v1.0(CC BY-NC-SA)&lt;/dcddm:rights&gt;</p></cell>
+                            </row>
+                        </table>
+                    </div>
+                    <div type="div3" rend="P120">
+                        <head>dcddm:accessRights</head>
+                        <table rend="frame" xml:id="Tabelle13">
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell rend="color(#000000)italic">A statement of any access
+                                    restrictions placed on the collection.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">See</cell>
+                                <cell rend="color(#000000)italic"><ptr
+                                        target="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsaccessRights"
+                                    />
+                                </cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment</cell>
+                                <cell rend="justify color(#000000)">Use of standard vocabulary
+                                    required. Provided values are based on DARIAH-DE suggestions and
+                                    maintained by DARIAH-DE.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Value</cell>
+                                <cell><p rend="justify color(#000000)">String</p><p
+                                        rend="justify color(#000000)">Controlled Vocabulary: <hi
+                                            rend="bold">dcddm:accesRightsValues</hi></p></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Obligation</cell>
+                                <cell rend="justify color(#000000)">M1</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Example (as XML)</cell>
+                                <cell rend="justify color(#000000)"
+                                    >&lt;dcddm:accessRights&gt;free&lt;/dcddm:accessRights&gt;</cell>
+                            </row>
+                        </table>
+                    </div>
+                    <div type="div3" rend="P121">
+                        <head>dcddm:accrualMethod</head>
+                        <table rend="frame" xml:id="Tabelle14">
+                            <row>
+                                <cell rend="justify">Definition</cell>
+                                <cell rend="color(#000000)italic">A method by which items are added
+                                    to a collection.</cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">See</cell>
+                                <cell rend="color(#000000)"><ptr
+                                        target="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsaccrualMethod"
+                                    /></cell>
+                            </row>
+                            <row>
+                                <cell rend="justify">Comment</cell>
+                                <cell><p rend="color(#000000)italic">Recommended best practice is to
+                                        use a value from a standard vocabulary provided and
+                                        maintained by DARIAH-DE but based on <ptr
+                                            target="http://dublincore.org/groups/collections/accrual-method/"
+                                        />. </p><p rend="color(#000000)italic">A value string must
+                                        be provided.</p><p rend="color(#000000)italic">Where
+                                        multiple methods apply, a separate statement should be used
+                                        for each method. The importance of each dcddm:accrualMethod
+                                        statemaent is expressed by the applied order, beginning with
+                                        the most important one. </p></cell>
+                            </row>
+                            <row>
+                                <cell>Value</cell>
+                                <cell><p rend="color(#000000)">String</p><p rend="color(#000000)"
+                                        >Controlled Vocabulary: <hi rend="bold">dcddm:</hi><hi
+                                            rend="bold">accrualMethodsValues</hi></p></cell>
+                            </row>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div type="div1" rend="P103">
+                <head><anchor type="bookmark-start" xml:id="id___RefHeading__784_129713347"
+                    />Vocabulary Encoding Schemes <ptr type="bookmark-end"
+                        target="#id___RefHeading__784_129713347"/></head>
+                <div type="div2">
+                    <div type="div3">
+                        <head><anchor type="bookmark-start" xml:id="id___RefHeading__849_129713347"
+                                />dcddm:collectionTypeValues<ptr type="bookmark-end"
+                                target="#id___RefHeading__849_129713347"/></head>
+                    </div>
+                    <div type="div3" rend="P107">
+                        <head>dcddm:itemTypeValues</head>
+                    </div>
+                    <div type="div3" rend="P109">
+                        <head>dcddm:rightsValues</head>
+                    </div>
+                    <div type="div3" rend="P122">
+                        <head><hi rend="color(#000000)">d</hi><hi rend="color(#000000)"
+                                >cddm:accesRightsValues</hi></head>
+                    </div>
+                    <div type="div3" rend="P123">
+                        <head>dcddm:accrualMethodValues</head>
+                    </div>
+                </div>
+            </div>
+            <div type="div1" rend="P104">
+                <head>Syntax Encoding Schemes</head>
+                <div type="div2">
+                    <div type="div3" rend="P108">
+                        <head>dcddm:languageValuesType</head>
+                    </div>
+                </div>
+            </div>
+            <div type="div1">
+                <head>Attributes, Values</head>
+            </div>
+        </body>
+    </text>
+</TEI>
