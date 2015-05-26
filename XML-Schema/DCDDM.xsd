@@ -38,7 +38,7 @@
     
     <!--
     #############################################################
-    #                    ELEMENT-DEFINITIONS                    #
+    #                    CLASS-DEFINITIONS                    #
     #############################################################
 -->
     
@@ -256,7 +256,7 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="accrualPolicy" type="dclap:simpleLiteral">
+    <xs:element name="accrualPolicy" type="dclap:accrualPolicyValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/accrualPolicy">
                 Definition: The policy governing the addition of items to a collection.
@@ -736,23 +736,177 @@
     </xs:complexType>
     <xs:simpleType name="accrualPeriodicityValues">
         <xs:annotation>
-            <xs:documentation xml:lang="en">
-                Fixed vocabulary provided by DARIAH-DE. 
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/">
+                Definition: A set of frequencies with which a repeatable event occurs. 
+                See alos: MARC 21 Concise Holdings: Caption and Pattern Fields (853-855)
             </xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:enumeration value="ongoing"/>
-            <xs:enumeration value="finalized/stable"/>
-            <xs:enumeration value="regularly"/>
-            <xs:enumeration value="irregularly"/>
+            <xs:enumeration value="triennial">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/#freqtriennial">
+                        Definition: The event occurs every three years.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="triennial">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/#freqtriennial">
+                        Definition: The event occurs every three years.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="biennial">
+               <xs:annotation>
+                   <xs:documentation source="http://dublincore.org/groups/collections/frequency/#freqbiennial" xml:lang="en">
+                       Definition: The event occurs every two years. 
+                   </xs:documentation>
+               </xs:annotation> 
+            </xs:enumeration>
+            <xs:enumeration value="annual">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/#freqannual">
+                        Definition: The event occurs once a year.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="semiannual">
+                <xs:annotation>
+                    <xs:documentation source="http://dublincore.org/groups/collections/frequency/#freqsemiannual" xml:lang="en">
+                        Definition: The event occurs twice a year.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="threeTimesAYear">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/#freqthreeTimesAYear">
+                        Definition: The event occurs three times a year.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="quarterly">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/#freqquarterly">
+                        Definition: The event occurs every three months.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="bimonthly">
+                <xs:annotation>
+                    <xs:documentation source="http://dublincore.org/groups/collections/frequency/#freqbimonthly" xml:lang="en">
+                        Definition: The event occurs every two months.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="monthly">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/#freqmonthly">
+                        Definition: The event occurs once a month.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="semimonthly">
+                <xs:annotation>
+                    <xs:documentation source="http://dublincore.org/groups/collections/frequency/#freqsemimonthly" xml:lang="en">
+                        Definition: The event occurs twice a month.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="biweekly">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/#freqbiweekly">
+                        Definition: The event occurs every two weeks.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="threeTimesAMonth">
+                <xs:annotation>
+                    <xs:documentation source="http://dublincore.org/groups/collections/frequency/#freqthreeTimesAMonth" xml:lang="en">
+                        Definition: The event occurs three times a month.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="weekly">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/#freqweekly">
+                        Definition: The event occurs once a week.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="semiweekly">
+                <xs:annotation>
+                    <xs:documentation source="http://dublincore.org/groups/collections/frequency/#freqsemiweekly" xml:lang="en">
+                        Definition: The event occurs twice a week.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="threeTimesAWeek">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/#freqthreeTimesAWeek">
+                        Definition: The event occurs three times a week.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="daily">
+                <xs:annotation>
+                    <xs:documentation source="http://dublincore.org/groups/collections/frequency/#freqdaily" xml:lang="en">
+                        Definition: The event occurs once a day.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="continuous">
+                <xs:annotation>
+                    <xs:documentation source="http://dublincore.org/groups/collections/frequency/#freqcontinuously" xml:lang="en">
+                        Definition: The event repeats without interruption.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="irregularly">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/#freqirregular">
+                        Definition: The event occurs at uneven intervals.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="periodical"/>
-            <xs:enumeration value="daily"/>
-            <xs:enumeration value="weekly"/>
-            <xs:enumeration value="monthly"/>
-            <xs:enumeration value="quarterly"/>
-            <xs:enumeration value="biannual"/>
-            <xs:enumeration value="annual"/>
             <xs:enumeration value="not specified"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="accrualPolicyValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/accrual-policy/">
+                Definition: A set of policies governing the addition of items are added to a collection.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="closed">
+                <xs:annotation>
+                    <xs:documentation source="http://dublincore.org/groups/collections/accrual-policy/#accpolclosed" xml:lang="en">
+                        Definition: A policy that items are no longer added to the collection.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="passive">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/accrual-policy/#accpolpassive">
+                        Definition: A policy that items are added to the collection only in response to the initiative of an external agent.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="active">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/accrual-policy/#accpolactive">
+                        Definition: A policy that items are actively sought for addition to the collection.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="partial">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="A policy that items are actively sought for addition to a specific part of the collection.">
+                        Definition: A policy that items are actively sought for addition to a specific part of the collection.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
     <xs:complexType name="simpleLiteral">
