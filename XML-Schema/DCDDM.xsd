@@ -58,30 +58,30 @@
                 <xs:element ref="dclap:landingpage" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="dclap:collectionType" minOccurs="1"/>
                 <xs:element ref="dclap:description" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:acronym" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dclap:extent" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dclap:language" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:acronym" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dclap:extent" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:language" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:itemType" minOccurs="1" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:rights" minOccurs="1" maxOccurs="1"/>
                 <xs:element ref="dclap:accessRights" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dclap:accrualMethod" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dclap:accrualPeriodicity" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dclap:accrualPolicy" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dclap:provenance" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dclap:audience" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:subject" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:spatial" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:temporal" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:dateCollectionCreated" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:dateItemsCreated" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:creator" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:owner" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:isLocatedAt" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:isAccessedVia" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:hasPartOf" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:isPartOf" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:metadataEncodingScheme" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:itemEncodingScheme" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:accrualMethod" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:accrualPeriodicity" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:accrualPolicy" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:provenance" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:audience" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:subject" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:spatial" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:temporal" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:accumulationDateRange" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:contentsDateRange" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:creator" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:owner" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:isLocatedAt" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:isAccessedVia" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:hasPartOf" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:isPartOf" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:metadataEncodingScheme" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:itemEncodingScheme" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -124,9 +124,18 @@
             <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/title">
                 Definition: A name given to the resource.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/title">
-                Comment: Typically, a Title will be a name by which the resource is formally known.
-            </xs:documentation>                    
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctitle">
+                Comment: A value string must be provided.                
+                To record titles in multiple languages, use multiple statements and in each statement associate the value string with the appropriate language tag. 
+                Where an existing name is used, the value string should preserve the original wording, order and spelling of an existing name. Punctuation need not reflect the usage of the original. Subtitles should be separated from the title by a sequence of space-colon-space.           
+            </xs:documentation>
+            <xs:documentation xml:lang="en">
+                Supplied Comment: The usage of several different languages in one titel element should be avoided if possible. 
+            </xs:documentation>
+            <xs:documentation xml:lang="deu" source="DCLAP Data Model">
+                Don´t: International Dunhuang Project. Die Seidenstraße online
+                Do: Internationales Dunhuang Projekt: Die Seidenstraße online 
+            </xs:documentation>
         </xs:annotation>
     </xs:element>
     <xs:element name="identifier" type="dclap:identifier">
@@ -176,7 +185,7 @@
     <xs:element name="extent" type="dclap:simpleLiteral">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/extent">
-                Definition: The size or duration of the resource.
+                Definition: The size of the collection.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
@@ -193,7 +202,7 @@
                 Definition: The nature or genre of the content of one or more items within the collection.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="http://dublincore.org/documents/dcmi-type-vocabulary/#H7">
-                Comment: Use of standard vocabulary required. Values taken from DCMI Type Vocabulary
+                Comment: Use of standard vocabulary required. Values taken from DCMI Type Vocabulary.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
@@ -305,7 +314,7 @@
     <xs:element name="temporal">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/temporal">
-                Definition: Temporal characteristics of the resource.
+                Definition: The temporal coverage of the content of the items in the collection..
             </xs:documentation>
             <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: Dates must following provided formatting rules. A human readable label can be added. 
@@ -318,10 +327,10 @@
             </xs:sequence> 
         </xs:complexType>
     </xs:element>
-    <xs:element name="dateCollectionCreated">
+    <xs:element name="accumulationDateRange">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/created">
-                Definition: Date of creation of the resource.
+            <xs:documentation xml:lang="en" source="http://www.ukoln.ac.uk/metadata/dcmi/collection-application-profile/2004-02-01/#cldaccumulationDateRange">
+                Definition: The range of dates over which the collection was accumulated.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: Date must follow provided formatting rules. A human readable label can be added.
@@ -334,10 +343,10 @@
             </xs:sequence> 
         </xs:complexType>
     </xs:element>
-    <xs:element name="dateItemsCreated">
+    <xs:element name="contentsDateRange">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/cld/terms/dateItemsCreated">
-                Definition: A range of dates over which the individual items within the collection were created.
+                Definition: The range of dates of creation of the individual items within the collection.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: Dates must following provided formatting rules. A human readable label can be added. 
