@@ -73,14 +73,15 @@
                 <xs:element ref="dclap:subject" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:spatial" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:temporal" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:accumulationDateRange" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dclap:contentsDateRange" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:collectionCreated" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:dateItemsCreated" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:creator" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:owner" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:isLocatedAt" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:isAccessedVia" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:hasPartOf" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:isPartOf" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:associatedCollection" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:metadataEncodingScheme" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dclap:itemEncodingScheme" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
@@ -291,14 +292,14 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dclap:subjectValue" minOccurs="1" maxOccurs="1">
+                <xs:element ref="dclap:subjectValues" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation xml:lang="en" source="DCLAP Data Model">
-                            Definition: Contains the code, signiture, URI, etc. matching the chosen encodingScheme-attribute.
+                            Definition: Contains the code, signature, URI, etc. matching the chosen encodingScheme-attribute.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element ref="dclap:label">
+                <xs:element ref="dclap:label" minOccurs="0" maxOccurs="unbounded">
                     <xs:annotation>
                         <xs:documentation xml:lang="en" source="DCLAP Data Model">
                             Definition: Provides a human readable text of the chosen subject.
@@ -319,7 +320,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dclap:spatialValue" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:spatialValues" minOccurs="1" maxOccurs="1"/>
                 <xs:element ref="dclap:label" minOccurs="1" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
@@ -340,10 +341,10 @@
             </xs:sequence> 
         </xs:complexType>
     </xs:element>
-    <xs:element name="accumulationDateRange">
+    <xs:element name="collectionCreated">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://www.ukoln.ac.uk/metadata/dcmi/collection-application-profile/2004-02-01/#cldaccumulationDateRange">
-                Definition: The range of dates over which the collection was accumulated.
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermscreated">
+                Definition: A range of dates over which the collection was accumulated.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: Date must follow provided formatting rules. A human readable label can be added.
@@ -356,10 +357,10 @@
             </xs:sequence> 
         </xs:complexType>
     </xs:element>
-    <xs:element name="contentsDateRange">
+    <xs:element name="dateItemsCreated">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/cld/terms/dateItemsCreated">
-                Definition: The range of dates of creation of the individual items within the collection.
+                Definition: A range of dates over which the individual items within the collection were created.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: Dates must following provided formatting rules. A human readable label can be added. 
@@ -468,6 +469,18 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
+    <xs:element name="associatedCollection">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#colcldassociatedCollection">
+                Definition: A second collection that is associated with the current collection.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:COLLECTION"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
     <xs:element name="itemEncodingScheme" type="xs:string">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="DCLAP Data Model">
@@ -475,7 +488,7 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="spatialValue">
+    <xs:element name="spatialValues">
         <xs:complexType mixed="true">
             <xs:attribute name="vocabularyEncodingScheme" use="required">
                 <xs:simpleType>
@@ -515,7 +528,7 @@
             </xs:attribute>
         </xs:complexType>
     </xs:element>
-    <xs:element name="subjectValue">
+    <xs:element name="subjectValues">
         <xs:complexType mixed="true">
             <xs:attribute name="vocabularyEncodingScheme" use="required">
                 <xs:simpleType>
