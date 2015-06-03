@@ -8,8 +8,8 @@
     attributeFormDefault="unqualified">
 
 <!--
-        NOTE: xmlns:dcddm="http://schema.dariah.eu/colreg/dcddm/" is a placeholder for an upcoming online-documentation of the dcddm Data Model
-        NOTE: The prefix dcddm: is considered as a working title and stands for DARIAH Collection Description Data Model   
+        NOTE: "source="dcddm Data Model" is a placeholder for an upcoming online-documentation of the dcddm Data Model
+        NOTE: The prefix dcddm: is considered as a working title and stands for Dariah Collection Application Profile    
 -->
     <xs:annotation>
         <xs:documentation xml:lang="en">
@@ -17,10 +17,9 @@
             Principles: As strict as possible. Avoiding dependencies by avoiding the import of other XML-Schemas.
             History: Based on the Dublin Core Collection Application Profile; the DARIAH-DE Collection Registry (GUI) and an internal DARIAH-DE paper/wiki-page "DARIAH-DE Collection Level Description Application
             Profile" 
-            Creator: Peter Andorfer
+            Creators: Peter Andorfer and David Maus
         </xs:documentation>
     </xs:annotation>
-    
     <xs:import namespace="http://www.w3.org/XML/1998/namespace"
         schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
         
@@ -44,7 +43,7 @@
                 <xs:element ref="dcddm:title" minOccurs="1"/>
                 <xs:element ref="dcddm:identifier" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:providedIdentifier" minOccurs="0"></xs:element>
-                <xs:element ref="dcddm:webPage" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:landingPage" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="dcddm:collectionType" minOccurs="1"/>
                 <xs:element ref="dcddm:description" minOccurs="1" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:acronym" minOccurs="0" maxOccurs="1"/>
@@ -99,7 +98,7 @@
                     <xs:element ref="dcddm:providedIdentifier" minOccurs="0" maxOccurs="unbounded"/>
                     <xs:element ref="dcddm:address" minOccurs="0" maxOccurs="1"/>
                     <xs:element ref="dcddm:email" minOccurs="0" maxOccurs="unbounded"/>
-                    <xs:element ref="dcddm:webPage" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="dcddm:webpage" minOccurs="0" maxOccurs="unbounded"/>
                     <xs:element ref="dcddm:phoneNumber" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
@@ -162,6 +161,13 @@
                 </xs:simpleType>
             </xs:attribute>      
         </xs:complexType>
+    </xs:element>
+    <xs:element name="landingPage" type="xs:anyURI">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Definition: URL to a webpage of the collection.
+            </xs:documentation>
+        </xs:annotation>
     </xs:element>
     <xs:element name="collectionType" type="dcddm:collectionTypeValues">
         <xs:annotation>
@@ -853,7 +859,7 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="webPage" type="xs:anyURI">
+    <xs:element name="webpage" type="xs:anyURI">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
                 Definition: Only provide webpages when you can be sure that they will stay online for as long as the collection description is meant to be public or you have the resources to keep them alive.
@@ -876,7 +882,7 @@
     
     <!--
     #############################################################
-    #                    Types and Values                       #
+    #                    Type-DEFINITIONS                       #
     #############################################################
 -->
 

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLECTION xmlns="http://schema.dariah.eu/colreg/dcddm/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://schema.dariah.eu/colreg/dclap/ DCDDM.xsd">
+    <title xml:lang="deu">Mitglieder der Fruchtbringenden Gesellschaft</title>
+    <providedIdentifier normDataRecord="GND">850797470</providedIdentifier>
+    <collectionType>Collection</collectionType>
+    <description xml:lang="deu">Personendatenbank zu den Mitgliedern der Fruchtbringenden Gesellschaft. Die Fruchtbringende Gesellschaft war die erste, mit 890 Mitgliedern auch größte deutsche Sprachakademie. Aufgrund ihrer hohen Mitgliederzahl aus dem Adels- und Reichsfürstenstand war sie höfisch, politisch, militärisch und diplomatisch vernetzt. Der FG standen die italienischen Renaissance-Akademien Modell, sie knüpfte aber auch an  Ritterorden, Adelsgesellschaften und Bruderschaften an und fungierte zum Teil wie eine Gelehrtengesellschaft und literarische Vereinigung.</description>
+    <acronym>MdFG</acronym>
+    <size>891</size>
+    <language isoStandard="ISO639-3">deu</language>
+    <itemType>Dataset</itemType>
+    <collectionDescriptionRights>Attribution Non-Commercial Share Alike v3.0(CC BY-NC-SA)</collectionDescriptionRights>
+    <itemsRights>Attribution Non-Commercial Share Alike v3.0(CC BY-NC-SA)</itemsRights>
+    <accessRights>free</accessRights>
+    <accrualMethod>itemcreation</accrualMethod>
+    <accrualPeriodicity>finalized/stable</accrualPeriodicity>
+    <accrualPolicy>active</accrualPolicy>
+    <audience xml:lang="deu">Frühneuzeitforschung</audience>
+    <audience xml:lang="deu">Germanistik</audience>
+    <subject>
+        <subjectValues vocabularyEncodingScheme="GND">4148875-1</subjectValues>
+        <label xml:lang="deu">Datensammlung</label>
+    </subject>
+    <subject>
+        <subjectValues vocabularyEncodingScheme="DDC">900</subjectValues>
+        <label xml:lang="eng">Geography &amp; history</label>
+    </subject>
+    <spatial>
+        <spatialValues vocabularyEncodingScheme="GND">2035457-5</spatialValues>
+        <label>Heiliges Römisches Reich</label>
+    </spatial>
+    <spatial>
+        <spatialValues vocabularyEncodingScheme="GeoNames">2921044</spatialValues>
+        <label>Deutschland</label>
+    </spatial>
+    <temporal>
+        <temporalValue>1492/1789</temporalValue>
+        <label>Frühe Neuzeit</label>
+    </temporal>
+    <collectionCreated>
+        <temporalValue>2006</temporalValue>
+    </collectionCreated>
+    <dateItemsCreated>
+        <temporalValue>2006/</temporalValue>
+        <label>laufend ab 2006</label>
+    </dateItemsCreated>
+    <creator>
+        <AGENT>
+            <agentType>person</agentType>
+            <name>Herz</name>
+            <forename>Andreas</forename>
+            <providedIdentifier normDataRecord="GND">1044494867</providedIdentifier>
+            <address>
+                <street>Lessingplatz</street>
+                <houseNumber>1</houseNumber>
+                <postalCode>38304</postalCode>
+                <place>
+                    <spatial>
+                        <spatialValues vocabularyEncodingScheme="GeoNames">6557395</spatialValues>
+                        <label xml:lang="deu">Wolfenbüttel</label>
+                    </spatial>
+                </place>
+                <country>
+                    <spatial>
+                        <spatialValues vocabularyEncodingScheme="GeoNames">2921044</spatialValues>
+                        <label xml:lang="deu">Englisch</label>
+                    </spatial>
+                </country>
+            </address>
+        </AGENT>
+    </creator>
+    <hasOAI-PMH>
+        <baseURL></baseURL>
+        <OAISet></OAISet>
+        <listMetadataFormats></listMetadataFormats>
+    </hasOAI-PMH>
+    <hasREST-API>
+        <baseURL>fsdaf</baseURL>
+        <supportedRESTMethods>GET</supportedRESTMethods>
+    </hasREST-API>
+    <hasOPAC>
+        <baseURL></baseURL>
+    </hasOPAC>
+</COLLECTION>

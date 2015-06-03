@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:dcddm="http://schema.dariah.eu/colreg/dcddm/" xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:dclap="http://schema.dariah.eu/colreg/dclap/" xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:cld="http://purl.org/cld/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:mods="http://www.loc.gov/mods/v3" xmlns:dcldf="http://purl.org/cld/freq"
     xmlns:vcard="http://www.w3.org/2006/vcard/"
-    targetNamespace="http://schema.dariah.eu/colreg/dcddm/" elementFormDefault="qualified"
+    targetNamespace="http://schema.dariah.eu/colreg/dclap/" elementFormDefault="qualified"
     attributeFormDefault="unqualified">
 
 <!--
-        NOTE: xmlns:dcddm="http://schema.dariah.eu/colreg/dcddm/" is a placeholder for an upcoming online-documentation of the dcddm Data Model
-        NOTE: The prefix dcddm: is considered as a working title and stands for DARIAH Collection Description Data Model   
+        NOTE: "source="DCLAP Data Model" is a placeholder for an upcoming online-documentation of the DCLAP Data Model
+        NOTE: The prefix dclap: is considered as a working title and stands for Dariah Collection Application Profile    
 -->
     <xs:annotation>
         <xs:documentation xml:lang="en">
@@ -17,13 +17,25 @@
             Principles: As strict as possible. Avoiding dependencies by avoiding the import of other XML-Schemas.
             History: Based on the Dublin Core Collection Application Profile; the DARIAH-DE Collection Registry (GUI) and an internal DARIAH-DE paper/wiki-page "DARIAH-DE Collection Level Description Application
             Profile" 
-            Creator: Peter Andorfer
+            Creators: Peter Andorfer and David Maus
         </xs:documentation>
     </xs:annotation>
-    
     <xs:import namespace="http://www.w3.org/XML/1998/namespace"
         schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
-        
+
+    <xs:element name="CollectionDescription">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: Root element of the collection description
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:COLLECTION" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
     <!--
     #############################################################
     #                    CLASS-DEFINITIONS                    #
@@ -41,47 +53,42 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:title" minOccurs="1"/>
-                <xs:element ref="dcddm:identifier" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:providedIdentifier" minOccurs="0"></xs:element>
-                <xs:element ref="dcddm:webPage" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcddm:collectionType" minOccurs="1"/>
-                <xs:element ref="dcddm:description" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:acronym" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcddm:size" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:language" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:itemType" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:collectionDescriptionRights" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dcddm:itemsRights" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:accessRights" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dcddm:accrualMethod" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:accrualPeriodicity" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:accrualPolicy" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:provenance" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:audience" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:subject" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:spatial" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:temporal" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:collectionCreated" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:dateItemsCreated" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:creator" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:owner" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:isLocatedAt" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:hasPartOf" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:isPartOf" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:associatedCollection" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:metadataEncodingScheme" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:itemEncodingScheme" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:hasOAI-PMH" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcddm:hasREST-API" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcddm:hasOPAC" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcddm:hasBEACON" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:hasReadingRoom" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:reproductionPossibilities" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:title" minOccurs="1"/>
+                <xs:element ref="dclap:identifier" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:providedIdentifier" minOccurs="0"></xs:element>
+                <xs:element ref="dclap:landingPage" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dclap:collectionType" minOccurs="1"/>
+                <xs:element ref="dclap:description" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:acronym" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dclap:size" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:language" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:itemType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:collectionDescriptionRights" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:itemsRights" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:accessRights" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:accrualMethod" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:accrualPeriodicity" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:accrualPolicy" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:provenance" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:audience" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:subject" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:spatial" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:temporal" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:collectionCreated" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:dateItemsCreated" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:creator" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:owner" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:isLocatedAt" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:isAccessedVia" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:hasPartOf" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:isPartOf" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:associatedCollection" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:metadataEncodingScheme" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dclap:itemEncodingScheme" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="AGENT">
+    <xs:element name="AGENT" type="dclap:AGENT">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/Agent">
                 Definition: A resource that acts or has the power to act.
@@ -90,19 +97,23 @@
                 Comment: Examples of Agent include person, organization, and software agent.
             </xs:documentation>
         </xs:annotation>
-        <xs:complexType>
-            <xs:sequence>
-                    <xs:element ref="dcddm:agentType" minOccurs="1"/>
-                    <xs:element ref="dcddm:name" minOccurs="1"/>
-                    <xs:element ref="dcddm:forename" minOccurs="0" maxOccurs="unbounded"/>
-                    <xs:element ref="dcddm:identifier" minOccurs="0" maxOccurs="unbounded"/>
-                    <xs:element ref="dcddm:providedIdentifier" minOccurs="0" maxOccurs="unbounded"/>
-                    <xs:element ref="dcddm:address" minOccurs="0" maxOccurs="1"/>
-                    <xs:element ref="dcddm:email" minOccurs="0" maxOccurs="unbounded"/>
-                    <xs:element ref="dcddm:webPage" minOccurs="0" maxOccurs="unbounded"/>
-                    <xs:element ref="dcddm:phoneNumber" minOccurs="0" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
+    </xs:element>
+    <xs:element name="SERVICE" type="dclap:SERVICE">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Service">
+                Definition:	A system that provides one or more functions.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Service">
+                Comment: Examples include a photocopying service, interlibrary loans, a reading room, a metadata harvesting protocoll (OAI-PMH), an OPAC, a GND-Beacon, etc.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="LOCATION" type="dclap:LOCATION">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/Location">
+                Definition:	A spatial region or named place.
+            </xs:documentation>
+        </xs:annotation>
     </xs:element>
    
     <!--
@@ -111,7 +122,7 @@
     #############################################################
 -->
     
-    <xs:element name="title" type="dcddm:simpleLiteral">
+    <xs:element name="title" type="dclap:simpleLiteral">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/title">
                 Definition: A name given to the resource.
@@ -124,14 +135,18 @@
             <xs:documentation xml:lang="en">
                 Supplied Comment: The usage of several different languages in one titel element should be avoided if possible. 
             </xs:documentation>
+            <xs:documentation xml:lang="deu" source="DCLAP Data Model">
+                Don´t: International Dunhuang Project. Die Seidenstraße online
+                Do: Internationales Dunhuang Projekt: Die Seidenstraße online 
+            </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="identifier" type="dcddm:identifierValues">
+    <xs:element name="identifier" type="dclap:identifier">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/identifier">
                 Definition: An unambiguous reference to the resource within a given context.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: A collection identifier should be a URI, using a URI scheme that has been registered with IANA.
                 The URI of the collection should be used as the resource URI of the description and also as the value string in a statement using the dc:identifier property.
                 If multiple URIs are assigned to a collection, one of the URIs should be used as the resource URI, and each URI, including the resource URI, should be used as the value string in a separate statement using the dc:identifier property.
@@ -142,10 +157,8 @@
     </xs:element>
     <xs:element name="providedIdentifier">
         <xs:annotation>
-            <xs:documentation source="dcddm Data Model" xml:lang="en">
+            <xs:documentation source="DCLAP Data Model" xml:lang="en">
                 Definition: An unambiguous reference to the resource within an already existing context like an institution or an application.
-            </xs:documentation>
-            <xs:documentation source="dcddm Data Model" xml:lang="en">
                 Comment: In case your collection is already supplied with one ore more identifiers which you would like keep on using to maintain interoperability.
                 The attribute normdataRecord holds information about any normdata record the provided identifier is taken from. 
             </xs:documentation>
@@ -163,17 +176,24 @@
             </xs:attribute>      
         </xs:complexType>
     </xs:element>
-    <xs:element name="collectionType" type="dcddm:collectionTypeValues">
+    <xs:element name="landingPage" type="xs:anyURI">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: URL to a webpage of the collection.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="collectionType" type="dclap:collectionTypeValues">
         <xs:annotation>
             <xs:documentation source="http://purl.org/dc/elements/1.1/type">
                 Definition: The nature or genre of the resource.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="description" type="dcddm:simpleLiteral">
+    <xs:element name="description" type="dclap:simpleLiteral">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsabstract">
                 Definition: A free text summary description of the collection.
@@ -185,9 +205,9 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="acronym" type="dcddm:simpleLiteral">  
+    <xs:element name="acronym" type="dclap:simpleLiteral">  
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Defintion: An acronym of the collection.  
             </xs:documentation>
         </xs:annotation>
@@ -196,20 +216,18 @@
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/extent">
                 Definition: The size of the collection.
-            </xs:documentation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/extent">
                 Comment: The size or extent of the collection should be described by providing the number of the collection`s items. If the exact number is unknown or the collection is still growing a rough estimation should be provided. 
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="language" type="dcddm:languageValues">
+    <xs:element name="language" type="dclap:languageValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/language">
                 Definition: A language of the resource.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="itemType" type="dcddm:itemTypeValues">
+    <xs:element name="itemType" type="dclap:itemTypeValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/cld/terms/itemType">
                 Definition: The nature or genre of the content of one or more items within the collection.
@@ -219,7 +237,7 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="collectionDescriptionRights" type="dcddm:rigthsValues">
+    <xs:element name="collectionDescriptionRights" type="dclap:rigthsValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/rights">
                 Definition: A statement of any rights held in/over the collection description.
@@ -229,7 +247,7 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="itemsRights" type="dcddm:rigthsValues">
+    <xs:element name="itemsRights" type="dclap:rigthsValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/rights">
                 Definition: A statement of any rights held in/over the collection´s items.
@@ -239,41 +257,41 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="accessRights" type="dcddm:accessRightsValues">
+    <xs:element name="accessRights" type="dclap:accessRightsValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/accessRights">
                 Definition: Information about who can access the resource or an indication of its security status.
             </xs:documentation>
-            <xs:documentation xml:lang="de" source="dcddm Data Model">
+            <xs:documentation xml:lang="de" source="DCLAP Data Model">
                 Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions. 
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="accrualMethod" type="dcddm:accrualMethodsValues">
+    <xs:element name="accrualMethod" type="dclap:accrualMethodsValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/accrualMethod">
                 Definition: The method by which items are added to a collection.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="accrualPeriodicity" type="dcddm:accrualPeriodicityValues">
+    <xs:element name="accrualPeriodicity" type="dclap:accrualPeriodicityValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="The frequency with which items are added to a collection.">
                 Definition: The frequency with which items are added to a collection.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="accrualPolicy" type="dcddm:accrualPolicyValues">
+    <xs:element name="accrualPolicy" type="dclap:accrualPolicyValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/accrualPolicy">
                 Definition: The policy governing the addition of items to a collection.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="provenance" type="dcddm:simpleLiteral">
+    <xs:element name="provenance" type="dclap:simpleLiteral">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/provenance">
                 Definition: A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation.
@@ -283,7 +301,7 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="audience" type="dcddm:simpleLiteral">
+    <xs:element name="audience" type="dclap:simpleLiteral">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/audience">
                 Definition: A class of entity for whom the resource is intended or useful.
@@ -295,22 +313,22 @@
             <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/subject">
                 Definition:The topic of the resource.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: The subject has to be taken either from GND, DCC or LCSH.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:subjectValues" minOccurs="1" maxOccurs="1">
+                <xs:element ref="dclap:subjectValues" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
-                        <xs:documentation xml:lang="en" source="dcddm Data Model">
+                        <xs:documentation xml:lang="en" source="DCLAP Data Model">
                             Definition: Contains the code, signature, URI, etc. matching the chosen encodingScheme-attribute.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element ref="dcddm:label" minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="dclap:label" minOccurs="0" maxOccurs="unbounded">
                     <xs:annotation>
-                        <xs:documentation xml:lang="en" source="dcddm Data Model">
+                        <xs:documentation xml:lang="en" source="DCLAP Data Model">
                             Definition: Provides a human readable text of the chosen subject.
                         </xs:documentation>
                     </xs:annotation>
@@ -323,14 +341,14 @@
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/spatial">
                 Definition: Spatial characteristics of the resource.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: Local entities should be linked either to GeoNames or Getty Thesaurus of Geographic Names and a human readable label should be provided.  
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:spatialValues" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dcddm:label" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:spatialValues" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dclap:label" minOccurs="1" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -339,14 +357,14 @@
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/temporal">
                 Definition: The temporal coverage of the content of the items in the collection..
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: Dates must following provided formatting rules. A human readable label can be added. 
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:temporalValue" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcddm:label" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dclap:temporalValue" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dclap:label" minOccurs="0" maxOccurs="1"/>
             </xs:sequence> 
         </xs:complexType>
     </xs:element>
@@ -355,14 +373,14 @@
             <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermscreated">
                 Definition: A range of dates over which the collection was accumulated.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: Date must follow provided formatting rules. A human readable label can be added.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:temporalValue" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcddm:label" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dclap:temporalValue" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dclap:label" minOccurs="0" maxOccurs="1"/>
             </xs:sequence> 
         </xs:complexType>
     </xs:element>
@@ -371,14 +389,14 @@
             <xs:documentation xml:lang="en" source="http://purl.org/cld/terms/dateItemsCreated">
                 Definition: A range of dates over which the individual items within the collection were created.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: Dates must following provided formatting rules. A human readable label can be added. 
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:temporalValue" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcddm:label" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dclap:temporalValue" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dclap:label" minOccurs="0" maxOccurs="1"/>
             </xs:sequence> 
         </xs:complexType>
     </xs:element>
@@ -386,38 +404,58 @@
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/creator">
                 Definition: An entity primarily responsible for making the resource.</xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: A wrapper class for describing an AGENT. 
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:AGENT" maxOccurs="1"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="isLocatedAt">
-        <xs:annotation>
-            <xs:documentation></xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="dcddm:address"/>
+                <xs:element ref="dclap:AGENT" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="owner">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Definition: An AGENT who owns the collection.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: A wrapper class for describing an AGENT. 
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:AGENT" maxOccurs="1"/>
+                <xs:element ref="dclap:AGENT" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="isLocatedAt">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/cld/terms/isLocatedAt">
+                Definition: A location where the collection is held.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: A wrapper class for describing a LOCATION.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:LOCATION" minOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="isAccessedVia">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://purl.org/cld/terms/isAccessedVia">
+                Definition: A service that provides access to the items within the collection.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Comment: A wrapper class for describing a SERVICE.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dclap:SERVICE" minOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -426,13 +464,13 @@
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/hasPart">
                 Definition:A related resource [Collection] that is included either physically or logically in the described resource.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: A wrapper class for describing a COLLECTION.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:COLLECTION"/>
+                <xs:element ref="dclap:COLLECTION"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -441,19 +479,19 @@
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/isPartOf">
                 Definition: A related resource [Collection] in which the described resource is physically or logically included.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: A wrapper class for describing a COLLECTION.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:COLLECTION"/>
+                <xs:element ref="dclap:COLLECTION"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="metadataEncodingScheme" type="xs:string">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Definition: Encoding scheme for provided metadata of the collection´s objects.
             </xs:documentation>
         </xs:annotation>
@@ -466,188 +504,14 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:COLLECTION"/>
+                <xs:element ref="dclap:COLLECTION"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="itemEncodingScheme" type="xs:string">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Definition: Encding scheme used for modelling the collection´s objects. 
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="hasOAI-PMH">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: The (metadata of the) collection´s item are accessible through OAI-PMH.
-                </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: If the collection does not provide OAI-PMH ignore this element.
-            </xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="dcddm:baseURL" minOccurs="1"/>
-                <xs:element ref="dcddm:OAISet" minOccurs="1"/>
-                <xs:element ref="dcddm:listMetadataFormats" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:queryPolicies" minOccurs="0" maxOccurs="1"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="hasREST-API">
-        <xs:annotation>
-            <xs:documentation source="dcddm Data Model" xml:lang="en">
-                Definition: The (metadata of the) collection´s item are accessible via REST-API
-            </xs:documentation><xs:documentation source="dcddm Data Model" xml:lang="en">
-                Comment: If the collection does not provide a REST-API this element should be ignored.
-            </xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="dcddm:baseURL" minOccurs="1"/>
-                <xs:element ref="dcddm:supportedRESTMethods" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:itemEncodingScheme" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:queryPolicies" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcddm:furtherInfo" minOccurs="0" maxOccurs="1"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="hasOPAC">
-        <xs:annotation>
-            <xs:documentation source="dcddm Data Model">
-                Definition: The metadata of the collection´s item are accessible via OPAC.
-            </xs:documentation>
-            <xs:documentation source="dcddm Data Model">
-                Comment: If the collection is not accessible through an OPAC this element should be ignored.
-            </xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="dcddm:baseURL" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dcddm:OPACCollectionIdentifier" minOccurs="0" maxOccurs="1"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="hasBEACON">
-        <xs:annotation>
-            <xs:documentation source="http://gbv.github.io/beaconspec/beacon.html" xml:lang="en">
-                Definition: BEACON is a data interchange format for large numbers of uniform links.
-            </xs:documentation>
-            <xs:documentation source="dcddm Data Model" xml:lang="en">
-                Comment: If there is no BEACON, don´t use this statement.
-            </xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="dcddm:baseURL" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dcddm:beaconPrefix" minOccurs="0" maxOccurs="1"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="hasReadingRoom">
-        <xs:annotation>
-            <xs:documentation source="dcddm Data Model" xml:lang="en">
-                Definition: The collection´s items can be examined in a reading room.
-            </xs:documentation>
-            <xs:documentation source="dcddm Data Model" xml:lang="en">
-                Comment: If there is not any reading room this statement should be ignored.
-            </xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="dcddm:address" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dcddm:furtherInfo" minOccurs="0" maxOccurs="1"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="reproductionPossibilities">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: The owner allows the users to make reproductions of the collection´s items or provides a reproduction service. The reproduction possibilities 
-            </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: The reproduction possibilities can either be described in plain text or through a reference (URL) to an already existing description.
-                If there are not any reproduction possibilities then this statement should be ignored. 
-            </xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="dcddm:description" minOccurs="1" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="OPACCollectionIdentifier" type="xs:anyURI">
-        <xs:annotation>
-            <xs:documentation source="DLCAP Data Model" xml:lang="en">
-                Definition: A URI (querystring) resolving in an OPAC`s list view of all items of the collection.
-            </xs:documentation>
-            <xs:documentation source="DLCAP Data Model" xml:lang="en"> 
-                Comment: If the collection´s items (all of them) are not findable by one querystring this statement should be ignored. 
-            </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Example: The items of the collection "Arithmetica", a collection of books are findabel by this querystring: "http://opac.lbs-braunschweig.gbv.de/DB=2/SET=2/TTL=32/CMD?ACT=SRCHA&amp;IKT=54&amp;TRM=sgn+sgn+a%3A%3Farithm%3F"
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="beaconPrefix">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://gbv.github.io/beaconspec/beacon.html">
-                Definition: Specifies an URI pattern to construct sources identfiers.
-            </xs:documentation>
-            <xs:documentation xml:lang="en" source="http://gbv.github.io/beaconspec/beacon.html">
-                Comment: If no beacon PREFIX is specified this statement should be ignored.
-            </xs:documentation>
-            <xs:documentation xml:lang="en" source="https://www2.landesarchiv-bw.de/ofs21/dienste/LABW-Personen-GND-beacon.txt">
-                Example: http://d-nb.info/gnd/
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="supportedRESTMethods" type="dcddm:RESTMethodsValues">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: Provides information which REST-Methods are supported. The possible methods are: GET, POST, PUT, and DELETE.
-            </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: Use one dcddm:supportedRESTMethods element for each supported method. 
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="furtherInfo" type="xs:string">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: Provides any further information, either in plain text or in form of URL to a webpage containing query policies.
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="baseURL" type="xs:anyURI">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: Provides an URL to the service´s entry site. 
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="OAISet" type="xs:string">
-        <xs:annotation>
-            <xs:documentation>
-                Definition: Holds the name of an OAI-PMH Set. 
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="listMetadataFormats" type="xs:string">
-        <xs:annotation>
-            <xs:documentation source="dcddm Data Model" xml:lang="en">
-                Definition: Holds the name of the metadata format provided by the OAI-PMH.
-                </xs:documentation>
-            <xs:documentation source="dcddm Data Model" xml:lang="en">
-                Comment: Use one dcddm:listMetadataFormats element for each provided format.
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="queryPolicies" type="xs:string">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: Provides information about query policies, either in plain text or in form of URL to a webpage containing query policies.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
@@ -732,7 +596,7 @@
             </xs:attribute>
         </xs:complexType>
     </xs:element>
-    <xs:element name="temporalValue" type="dcddm:periodeValues">
+    <xs:element name="temporalValue" type="dclap:periodeValues">
     <!-- ToDo: Documentation        -->
     </xs:element>
     <xs:element name="label">
@@ -742,17 +606,17 @@
     </xs:element>
     <xs:element name="address">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Definition: Contains information related to a post address. 
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:street" minOccurs="0"/>                    
-                <xs:element ref="dcddm:houseNumber" minOccurs="0"/>
-                <xs:element ref="dcddm:postalCode" minOccurs="0"/>
-                <xs:element ref="dcddm:place" minOccurs="0"/>
-                <xs:element ref="dcddm:country" minOccurs="0"/>
+                <xs:element ref="dclap:street" minOccurs="0"/>                    
+                <xs:element ref="dclap:houseNumber" minOccurs="0"/>
+                <xs:element ref="dclap:postalCode" minOccurs="0"/>
+                <xs:element ref="dclap:place" minOccurs="0"/>
+                <xs:element ref="dclap:country" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -761,41 +625,29 @@
             <xs:documentation xml:lang="en" source="http://www.tei-c.org/release/doc/tei-p5-doc/de/html/ref-name.html ">
                 Definition: A name or proper noun or noun phrase.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: Should contain a person´s last or family name (surname) or the name of the described organisation.Should contain a person´s surname or the name of the described organisation. It is recommended to follow the naming conventions provided by the GND.
                 
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="forename">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://www.tei-c.org/release/doc/tei-p5-doc/de/html/ref-forename.html">
-                Definition: A forename, given or baptismal name.
-            </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: Only used for persons. 
-                In case of more than one forenames use only one statement to record all names. 
-                It is recommended to follow the naming conventions provided by the GND.
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
     <xs:element name="street" type="xs:string">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Definition: The street´s name of post address.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     <xs:element name="houseNumber" type="xs:string">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Definition: The house number of the agent´s post address.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     <xs:element name="postalCode" type="xs:string">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Definition: The postal code of the agent´s post address. 
             </xs:documentation>
             <xs:documentation>
@@ -805,82 +657,132 @@
     </xs:element>
     <xs:element name="place">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Definition: Holds information related to the place (city). 
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: The place should be linked to some normdata and provided with a human readable label. 
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:spatial"/>
+                <xs:element ref="dclap:spatial"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="country">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Definition: Names the country where the address is located 
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: The place should be linked to some normdata and provided with a human readable label. 
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:spatial"/>
+                <xs:element ref="dclap:spatial"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="agentType" type="dcddm:agentTypeValues">
+    <xs:element name="agentType" type="dclap:agentTypeValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/type">
                 Definition: The nature or genre of the resource.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
                 Comment: Use of standard vocabulary required. The provided values are 'person' and 'organisation'
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="email" type="xs:string">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: Provides an email address realted with the AGENT.
-            </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: Only provide email addresses when you can be sure that they will stay responsive for as long as the collection description is meant to be public or you have the resources to update them.
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="webPage" type="xs:anyURI">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: Only provide webpages when you can be sure that they will stay online for as long as the collection description is meant to be public or you have the resources to keep them alive.
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:element name="phoneNumber" type="xs:string">
-        <xs:annotation>
-            <xs:documentation source="dcddm Data Model" xml:lang="en">
-                Definition: Provides an phone number to a person/organisation capable of providing further information. 
-            </xs:documentation>
-            <xs:documentation source="dcddm Data Model" xml:lang="en">
-                Comment: Follow the syntax encoding scheme provided by http://www.din-5008-richtlinien.de/telefonnummern.php. The provision of a country code (+49) is recommended. 
-            </xs:documentation>
-            <xs:documentation source="http://www.din-5008-richtlinien.de/telefonnummern.php" xml:lang="en">
-                Example:  +49 5331 808-307
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element> 
-    
+    <xs:element name="serviceAccessMethod" type="dclap:servicaAccessMethodValues"/>
+    <xs:element name="serviceFunction" type="dclap:serviceFunctionValues"/>
+    <xs:element name="serviceURL" type="xs:anyURI"/>
+    <xs:element name="subset" type="xs:string"/>
+    <xs:element name="schemaID" type="xs:string"/>
+    <xs:element name="serviceInterface" type="xs:anyURI"/>
+    <xs:element name="serviceHelpURL" type="xs:anyURI"/>
+    <xs:element name="accessControl" type="dclap:accessRightsValues"/>
+    <xs:element name="consultant" type="dclap:AGENT"/>
     <!--
     #############################################################
-    #                    Types and Values                       #
+    #                    Type-DEFINITIONS                       #
     #############################################################
 -->
-
-    <xs:complexType name="identifierValues">
+    <xs:complexType name="SERVICE">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                Definition: Datatype for the dclap:SERVICE-Element.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="dclap:title" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="dclap:identifier" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:providedIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:serviceAccessMethod" minOccurs="1"/>
+            <xs:element ref="dclap:serviceFunction" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:serviceURL" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:subset" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:schemaID" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dclap:serviceInterface" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dclap:serviceHelpURL" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="dclap:accessControl" minOccurs="1"/>
+            <xs:element ref="dclap:consultant" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LOCATION">
+        <xs:annotation>
+            <xs:documentation>Definition: Datatype for the dclap:LOCATION-Element.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="dclap:name" minOccurs="1"/>
+            <xs:element ref="dclap:identifier" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:providedIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:address" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AGENT">
+        <xs:sequence>
+            <xs:element ref="dclap:agentType" minOccurs="1"/>
+            <xs:element ref="dclap:name" minOccurs="1"/>
+            <xs:element name="forename" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://www.tei-c.org/release/doc/tei-p5-doc/de/html/ref-forename.html">
+                        Definition: A forename, given or baptismal name.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                        Comment: Only used for persons. 
+                        In case of more than one forenames use only one statement to record all names. 
+                        It is recommended to follow the naming conventions provided by the GND.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="dclap:identifier" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:providedIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="dclap:address" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                        Definition: Provides an email address realted with the AGENT.
+                        Comment: Only provide email addresses when you can be sure that they will stay responsive for as long as the collection description is meant to be public or you have the resources to update them.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="webpage" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="DCLAP Data Model">
+                        Definition: Only provide webpages when you can be sure that they will stay online for as long as the collection description is meant to be public or you have the resources to keep them alive.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="phoneNumber" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation source="DCLAP Data Model" xml:lang="en"></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="identifier">
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="normdataRecord" default="none">
@@ -899,43 +801,6 @@
     <xs:complexType name="encodingSchemeValues">
         
     </xs:complexType>
-    <xs:simpleType name="RESTMethodsValues">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: A list of methods supported by a REST-API. 
-            </xs:documentation>
-        </xs:annotation>
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="GET">
-                <xs:annotation>
-                    <xs:documentation source="http://www.restapitutorial.com/lessons/httpmethods.html" xml:lang="en">
-                        Definition: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. In the “happy” (or non-error) path, GET returns a representation in XML or JSON and an HTTP response code of 200 (OK). In an error case, it most often returns a 404 (NOT FOUND) or 400 (BAD REQUEST).
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="POST">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en" source="http://www.restapitutorial.com/lessons/httpmethods.html">
-                        Definition: The POST verb is most-often utilized to **create** new resources. In particular, it's used to create subordinate resources. That is, subordinate to some other (e.g. parent) resource. In other words, when creating a new resource, POST to the parent and the service takes care of associating the new resource with the parent, assigning an ID (new resource URI), etc.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="PUT">
-                <xs:annotation>
-                    <xs:documentation source="http://www.restapitutorial.com/lessons/httpmethods.html" xml:lang="en">
-                        Definition: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-            <xs:enumeration value="DELETE">
-                <xs:annotation>
-                    <xs:documentation source="http://www.restapitutorial.com/lessons/httpmethods.html" xml:lang="en">
-                        Definition: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
-        </xs:restriction>
-    </xs:simpleType>
     <xs:simpleType name="accrualPeriodicityValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/">
@@ -1177,7 +1042,7 @@
                         <xs:element name="geonames-id" type="xs:token" maxOccurs="1">
 <!-- besteht die Geonames-ID nur als Zahlen bzw. kann als Datentyp xs:int festegelgt werden?    -->
                         </xs:element>
-                        <xs:element name="label" type="dcddm:simpleLiteral" minOccurs="1"
+                        <xs:element name="label" type="dclap:simpleLiteral" minOccurs="1"
                             maxOccurs="unbounded">
                             <xs:annotation>
                                 <xs:documentation>Definition: Name of the Place in plain text</xs:documentation>
@@ -1192,7 +1057,7 @@
                         <xs:element name="getty-id" type="xs:token" maxOccurs="1">
  <!-- besteht die Getty-ID nur als Zahlen bzw. kann als Datentyp xs:int festegelgt werden?    -->
                         </xs:element>
-                        <xs:element name="label" type="dcddm:simpleLiteral">
+                        <xs:element name="label" type="dclap:simpleLiteral">
                             <xs:annotation>
                                 <xs:documentation>Definition: Name of the Place in plain text</xs:documentation>
                             </xs:annotation>
@@ -1457,14 +1322,28 @@
             </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
+    <!--<xs:complexType name="itemTypeValues">
+        <xs:simpleContent>
+            <xs:extension base="dclap:itemTypeValueAttribut">
+                <xs:attribute name="encodingScheme" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="DCMITypeValues"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>-->
     <xs:simpleType name="languageValuesType">
         <xs:restriction base="xs:string">
             <xs:pattern value="[a-z][a-z][a-z]?"/>
         </xs:restriction>
     </xs:simpleType>
+    <!-- dmaus: Warum nicht xsd:language -->
     <xs:complexType name="languageValues">
         <xs:simpleContent>
-            <xs:extension base="dcddm:languageValuesType">
+            <xs:extension base="dclap:languageValuesType">
                 <xs:attribute name="isoStandard" use="required">
                     <xs:simpleType>
                         <xs:restriction base="xs:string">
@@ -1484,4 +1363,18 @@
             <xs:enumeration value="ReferentialCollection"/>
         </xs:restriction>
     </xs:simpleType>
+    <!-- no use for attribute as there is only one value specified
+        <xs:complexType name="timeSpan">
+        <xs:simpleContent>
+            <xs:extension base="dclap:periodeValues">
+                <xs:attribute name="encodingScheme" use="required">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="ISO8601"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>-->
 </xs:schema>
