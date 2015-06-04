@@ -36,58 +36,71 @@
                 Definition:	An aggregation of resources.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Collection">
-                Comment: A collection is described as a group; its parts may also be separately described.
+                Comment:In the DARIAH Collection Description Data Model a dcddm:COLLECTION is understood as an entity or class, defined by different XX elements, which themselves can contain their own attributes and child elements. Entities or classes differ from other complex elements therefore only in one point. Entities or classes contain at least one unique and unambiguous identifier which allows and supports the re-usability of those entities. 
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:title" minOccurs="1"/>
-                <xs:element ref="dcddm:identifier" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:providedIdentifier" minOccurs="0"></xs:element>
-                <xs:element ref="dcddm:webPage" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcddm:collectionType" minOccurs="1"/>
+                
+<!-- Mandatory elements -->
+                <xs:element ref="dcddm:title" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:collectionDescriptionCreated" minOccurs="1" maxOccurs="1"/>
                 <xs:element ref="dcddm:description" minOccurs="1" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:acronym" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcddm:size" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:language" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:itemType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:hasContact" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:collectionType" minOccurs="1"/>
                 <xs:element ref="dcddm:collectionDescriptionRights" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dcddm:itemsRights" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:accessRights" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dcddm:accrualMethod" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:accrualPeriodicity" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:accrualPolicy" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:provenance" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:audience" minOccurs="0" maxOccurs="unbounded"/>
+                              
+<!-- Content and item related elements -->
                 <xs:element ref="dcddm:subject" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:spatial" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:temporal" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:collectionCreated" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:dateItemsCreated" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:itemType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:size" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:language" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:metadataEncodingScheme" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:itemEncodingScheme" minOccurs="0" maxOccurs="unbounded"/>         
+
+<!-- Contextual elements -->
                 <xs:element ref="dcddm:creator" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:owner" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:audience" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:isLocatedAt" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:hasPartOf" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:isPartOf" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:associatedCollection" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:metadataEncodingScheme" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:itemEncodingScheme" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:associatedProject" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:provenance" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:acronym" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:identifier" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:providedIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+                
+<!-- Collection policy elements -->
+                <xs:element ref="dcddm:accrualMethod" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:accrualPolicy" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:accrualPeriodicity" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:itemsRights" minOccurs="0" maxOccurs="unbounded"/>
+
+<!-- Service elements   -->
+                <xs:element ref="dcddm:hasWebPage" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="dcddm:hasOAI-PMH" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="dcddm:hasREST-API" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="dcddm:hasOPAC" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="dcddm:hasBEACON" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:hasReadingRoom" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="dcddm:reproductionPossibilities" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:hasReproductionPossibilities" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="AGENT">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/Agent">
-                Definition: A resource that acts or has the power to act.
+                Definition: A resource that acts or has the power to act. Examples of Agent include person, organization, and software agent.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/Agent">
-                Comment: Examples of Agent include person, organization, and software agent.
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Comment: In the DARIAH Collection Description Data Model a dcddm:AGENT is understood as an entity or class, defined by XX elements, which themselves can contain their own attributes and child elements. Entities or classes differ from other complex elements therefore only in one point. Entities or classes contain at least one unique and unambiguous identifier which allows and supports the re-usability of those entities.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -99,13 +112,13 @@
                     <xs:element ref="dcddm:providedIdentifier" minOccurs="0" maxOccurs="unbounded"/>
                     <xs:element ref="dcddm:address" minOccurs="0" maxOccurs="1"/>
                     <xs:element ref="dcddm:email" minOccurs="0" maxOccurs="unbounded"/>
-                    <xs:element ref="dcddm:webPage" minOccurs="0" maxOccurs="unbounded"/>
+                    <xs:element ref="dcddm:hasWebPage" minOccurs="0" maxOccurs="unbounded"/>
                     <xs:element ref="dcddm:phoneNumber" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
    
-    <!--
+<!--
     #############################################################
     #                    ELEMENT-DEFINITIONS                    #
     #############################################################
@@ -119,10 +132,8 @@
             <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctitle">
                 Comment: A value string must be provided.                
                 To record titles in multiple languages, use multiple statements and in each statement associate the value string with the appropriate language tag. 
-                Where an existing name is used, the value string should preserve the original wording, order and spelling of an existing name. Punctuation need not reflect the usage of the original. Subtitles should be separated from the title by a sequence of space-colon-space.           
-            </xs:documentation>
-            <xs:documentation xml:lang="en">
-                Supplied Comment: The usage of several different languages in one titel element should be avoided if possible. 
+                Where an existing name is used, the value string should preserve the original wording, order and spelling of an existing name. Punctuation need not reflect the usage of the original. Subtitles should be separated from the title by a sequence of space-colon-space.
+                The usage of several different languages in one titel element should be avoided if possible.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
@@ -132,15 +143,16 @@
                 Definition: An unambiguous reference to the resource within a given context.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: A collection identifier should be a URI, using a URI scheme that has been registered with IANA.
-                The URI of the collection should be used as the resource URI of the description and also as the value string in a statement using the dc:identifier property.
-                If multiple URIs are assigned to a collection, one of the URIs should be used as the resource URI, and each URI, including the resource URI, should be used as the value string in a separate statement using the dc:identifier property.
+                Comment: A collection identifier should be a URI, using a URI scheme that has been registered with IANA.                
                 If the DCDDM is used in applications which help creating collection descriptions (i.e. DARIAH-DE Collection Registry), the application has to provide a valid URI.
+                The attribute normdataRecord holds information about any normdata record the provided identifier is taken from.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
                 Condition: Only if used in application which create their own identifieres. Otherwise this element should not be used.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="providedIdentifier">
+    <xs:element name="providedIdentifier" type="dcddm:identifierValues">
         <xs:annotation>
             <xs:documentation source="dcddm Data Model" xml:lang="en">
                 Definition: An unambiguous reference to the resource within an already existing context like an institution or an application.
@@ -150,18 +162,6 @@
                 The attribute normdataRecord holds information about any normdata record the provided identifier is taken from. 
             </xs:documentation>
         </xs:annotation>
-        <xs:complexType mixed="true">
-            <xs:attribute name="normDataRecord">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:enumeration value="GND"/>
-                        <xs:enumeration value="VIAF"/>
-                        <xs:enumeration value="other"/>
-                        <xs:enumeration value="none"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:attribute>      
-        </xs:complexType>
     </xs:element>
     <xs:element name="collectionType" type="dcddm:collectionTypeValues">
         <xs:annotation>
@@ -172,6 +172,27 @@
                 Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions.
             </xs:documentation>
         </xs:annotation>
+    </xs:element>
+    <xs:element name="hasContact">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Definition: Provides at least one possibility for potential users of the collection to get in contact with a person/organisation responsible for the collection.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Comment: Possible contact information might be an email address (recommended), a phone number, a web page (which must provide contact information) or an address.
+                For multiple contact informations use multiple dcddm:hasContact statements.
+                Each statement contains only one child element. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="dcddm:email" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:hasWebPage" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:phoneNumber" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:address" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:AGENT" minOccurs="0" maxOccurs="1"></xs:element>
+            </xs:choice>
+        </xs:complexType>
     </xs:element>
     <xs:element name="description" type="dcddm:simpleLiteral">
         <xs:annotation>
@@ -185,7 +206,7 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="acronym" type="dcddm:simpleLiteral">  
+    <xs:element name="acronym" type="xs:string">  
         <xs:annotation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
                 Defintion: An acronym of the collection.  
@@ -204,82 +225,103 @@
     </xs:element>
     <xs:element name="language" type="dcddm:languageValues">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/language">
-                Definition: A language of the resource.
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldclanguage">
+                Definition: A language of the items in the collection.</xs:documentation>
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldclanguage">
+                Comment: A value string must be provided; The value string should be a language name in the form of the three character code defined by ISO 639-3.
+                To facilitate mappings and transformations of already existing collection descriptions the use of the two character code defined by ISO 639-1 is possible but ISO 639-3 is the recommended standard.
+                Indicate the chosen standard through the attribute isoStandard 
+                Where the collection covers multiple languages, a separate statement should be used for each language.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     <xs:element name="itemType" type="dcddm:itemTypeValues">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/cld/terms/itemType">
-                Definition: The nature or genre of the content of one or more items within the collection.
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#colclditemType ">
+                Definition: The nature or genre of one or more items within the collection.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="http://dublincore.org/documents/dcmi-type-vocabulary/#H7">
-                Comment: Use of standard vocabulary required. Values taken from DCMI Type Vocabulary.
+                Comment: The value strings are provided by DCMI Type Vocabulary.
+                Where the collection includes items of multiple types, the significance of each dcddm:itemType for the collection is expressed through the order of the elements beginning with the most important one.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     <xs:element name="collectionDescriptionRights" type="dcddm:rigthsValues">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/rights">
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldcrights">
                 Definition: A statement of any rights held in/over the collection description.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="https://dev2.dariah.eu/wiki/x/cg9FAg">
-                Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions.
+                Comment: Provides information concerning the collection description and NOT the items of the collections. 
+                The value strings are provided and maintained by DARIAH-DE.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     <xs:element name="itemsRights" type="dcddm:rigthsValues">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/rights">
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldcrights ">
                 Definition: A statement of any rights held in/over the collection´s items.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="https://dev2.dariah.eu/wiki/x/cg9FAg">
-                Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions.
+                Comment: Provides information concerning the collection´s items. 
+                Where the collection includes items with different rights, use several dcddm:itemRights statements. The significance of each dcddm: itemRights is expressed through the order of the elements beginning with the most important one.
+                Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions and maintained by DARIAH-DE.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     <xs:element name="accessRights" type="dcddm:accessRightsValues">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/accessRights">
-                Definition: Information about who can access the resource or an indication of its security status.
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsaccessRights">
+                Definition: A statement of any access restrictions placed on the collection.
             </xs:documentation>
             <xs:documentation xml:lang="de" source="dcddm Data Model">
-                Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions. 
+                Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions and maintained by DARIAH-DE.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     <xs:element name="accrualMethod" type="dcddm:accrualMethodsValues">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/accrualMethod">
-                Definition: The method by which items are added to a collection.
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsaccrualMethod">
+                Definition: A method by which items are added to a collection.</xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Comment: Recommended best practice is to use a value from a standard vocabulary provided and maintained by DARIAH-DE but based on http://dublincore.org/groups/collections/accrual-method/. 
+                A value string must be provided.
+                Where multiple methods apply, a separate statement should be used for each method. The importance of each dcddm:accrualMethod  statement is expressed by the applied order, beginning with the most important one.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     <xs:element name="accrualPeriodicity" type="dcddm:accrualPeriodicityValues">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="The frequency with which items are added to a collection.">
-                Definition: The frequency with which items are added to a collection.
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsaccrualPeriodicity">
+                Definition: A frequency with which items are added to a collection.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: Use of standard vocabulary required. Provided values are based on DARIAH-DE suggestions.
+                Comment: Recommended best practice is to use a value from a standard vocabulary provided and maintained by DARIAH-DE but based on http://dublincore.org/groups/collections/frequency/  
+                A value string must be provided.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     <xs:element name="accrualPolicy" type="dcddm:accrualPolicyValues">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/accrualPolicy">
-                Definition: The policy governing the addition of items to a collection.
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsaccrualPolicy">
+                Definition: A policy governing the addition of items to a collection.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Recommended best practice is to use a value from a standard vocabulary provided and maintained by DARIAH-DE but based on http://dublincore.org/groups/collections/accrual-policy/ 
+                A value string must be provided.
+                Where multiple methods apply, a separate statement should be used for each method. The importance of each statement is expressed by the applied order, beginning with the most important one.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     <xs:element name="provenance" type="dcddm:simpleLiteral">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/provenance">
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsprovenance">
                 Definition: A statement of any changes in ownership and custody of the resource since its creation that are significant for its authenticity, integrity, and interpretation.
             </xs:documentation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/provenance">
-                Comment:The statement may include a description of any changes successive custodians made to the resource.
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Comment:To record changes in ownership and custody in multiple languages, use multiple statements and in each statement associate the value string with the appropriate language tag xml:lang. 
+                Use only one statement to report all changes, instead of one statement for each changement.
+                Do not just note the name of places/persons or institution without providing some more information on the number of the concerning items or on the date the described changes took place.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
@@ -292,11 +334,18 @@
     </xs:element>
     <xs:element name="subject">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/subject">
-                Definition:The topic of the resource.
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldcsubject ">
+                Definition: A subject or topic associated with the items in the collection.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: The subject has to be taken either from GND, DCC or LCSH.
+                Comment: Keywords or subject descriptors associated with items in the collection.
+                The terms used indicate the subject matter of the collection.
+                To enable homogenous descriptions the values of dcddm:subjects have to be taken from a controlled vocabulary, namely from GND, LCSH and DDC though the preferred vocabularies are GND and LCSH. 
+                To avoid ambiguity the subjects must be referred by their specific identifiers. 
+                To keep up the collection description´s human readability a label element should be provided. 
+                To record multiple languages, use multiple labels.
+                Where multiple keywords or subject descriptors are provided, a separate statement should be used for each keyword or descriptor.
+                The importance of each statement is expressed by the applied order, beginning with the most important one.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -320,35 +369,54 @@
     </xs:element>
     <xs:element name="spatial">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/spatial">
-                Definition: Spatial characteristics of the resource.
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsspatial ">
+                Definition: An indicator of the spatial scope of the resource.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: Local entities should be linked either to GeoNames or Getty Thesaurus of Geographic Names and a human readable label should be provided.  
+                Comment: To enable homogenous descriptions the values of dcddm:spatial have to be taken from a controlled vocabulary, namely from GND, GeoNames and Getty. Preferred are GeoNames and Getty because both provide gps coordinates. 
+                To avoid ambiguity the locations must be referred by their specific identifiers. 
+                To keep up the collection description´s human readability a label element should be provided. 
+                To record multiple languages, use multiple labels.
+                Where multiple spatial descriptors are provided, a separate statement should be used for each descriptor.
+                The importance of each statement is expressed by the applied order, beginning with the most important one.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:spatialValues" minOccurs="1" maxOccurs="1"/>
-                <xs:element ref="dcddm:label" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dcddm:spatialValues" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:label" minOccurs="1" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="temporal">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/temporal">
-                Definition: The temporal coverage of the content of the items in the collection..
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermstemporal">
+                Definition: An indicator of the temporal scope of the resource.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: Dates must following provided formatting rules. A human readable label can be added. 
+                Comment: To enable homogenous descriptions the values of dcddm:temporal have to follow a syntax encoding scheme
+                To keep up the collection description´s human readability a label element should be provided. 
+                To record multiple languages, use multiple labels.
+                Where multiple temporal descriptors are provided, a separate statement should be used for each descriptor.
+                The importance of each statement is expressed by the applied order, beginning with the most important one. 
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:temporalValue" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcddm:label" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:date" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dcddm:label" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence> 
         </xs:complexType>
+    </xs:element>
+    <xs:element name="collectionDescriptionCreated" type="dcddm:periodeValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermscreated">
+                Definition: A date of the creation of this collection description.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Comment: To enable homogenous descriptions the values of dcddm:collectionDescriptionCreated have to follow a syntax encoding scheme.
+            </xs:documentation>
+        </xs:annotation>
     </xs:element>
     <xs:element name="collectionCreated">
         <xs:annotation>
@@ -356,38 +424,65 @@
                 Definition: A range of dates over which the collection was accumulated.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: Date must follow provided formatting rules. A human readable label can be added.
+                Comment: To enable homogenous descriptions the values of dcddm:collectionCreated have to follow a syntax encoding scheme
+                To keep up the collection description´s human readability a label element should be provided. 
+                To record multiple languages, use multiple labels.
+                Where multiple temporal descriptors are provided, a separate statement should be used for each descriptor.
+                The importance of each statement is expressed by the applied order, beginning with the most important one.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:temporalValue" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:date" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="dcddm:label" minOccurs="0" maxOccurs="1"/>
             </xs:sequence> 
         </xs:complexType>
     </xs:element>
     <xs:element name="dateItemsCreated">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/cld/terms/dateItemsCreated">
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#colclddateItemsCreated">
                 Definition: A range of dates over which the individual items within the collection were created.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: Dates must following provided formatting rules. A human readable label can be added. 
+                Comment: To enable homogenous descriptions the values of dcddm:created have to follow a syntax encoding scheme
+                To keep up the collection description´s human readability a label element should be provided. 
+                To record multiple languages, use multiple labels.
+                Where multiple temporal descriptors are provided, a separate statement should be used for each descriptor.
+                The importance of each statement is expressed by the applied order, beginning with the most important one. 
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:temporalValue" minOccurs="0" maxOccurs="1"/>
-                <xs:element ref="dcddm:label" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:date" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="dcddm:label" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence> 
         </xs:complexType>
     </xs:element>
     <xs:element name="creator">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/elements/1.1/creator">
-                Definition: An entity primarily responsible for making the resource.</xs:documentation>
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldccreator">
+                Definition: An entity who gathers (or gathered) the items in a collection together. resource.</xs:documentation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: A wrapper class for describing an AGENT. 
+                Comment: Holds either a dcddm:AGENT or a reference to a dccdm:AGENT. 
+                To record multiple creators, separate statements should be used. 
+                The importance of each statement is expressed by the applied order, beginning with the most important one. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dcddm:AGENT" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="owner">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#colmarcrelOWN  ">
+                Definition: An entity who has legal possession of the collection.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Comment: Holds either a dcddm:AGENT or a reference to a dccdm:AGENT. 
+                To record multiple creators, seperate statements should be used. 
+                The importance of each statement is expressed by the applied order, beginning with the most important one. 
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -398,65 +493,57 @@
     </xs:element>
     <xs:element name="isLocatedAt">
         <xs:annotation>
-            <xs:documentation></xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="dcddm:address"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="owner">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: An AGENT who owns the collection.
+            <xs:documentation source="http://dublincore.org/groups/collections/collection-application-profile/#colcldisLocatedAt" xml:lang="en">
+                Definition: A location where the collection is held.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: A wrapper class for describing an AGENT. 
+                Comment: Holds a dcddm:address statement.
+                To record multiple locations, separate statements should be used. 
+                The importance of each statement is expressed by the applied order, beginning with the most important one.
+                In case the collection´s item are digitized it is recommended to name the adress related with the person/organisation who has legal possession of the collection. Usually this person/organisation is also referenced by dcddm:owner.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:AGENT" maxOccurs="1"/>
+                <xs:element ref="dcddm:address" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="hasPartOf">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/hasPart">
-                Definition:A related resource [Collection] that is included either physically or logically in the described resource.
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermshasPart">
+                Definition:The described resource includes the referenced resource either physically or logically.
+                A second collection contained within the current collection.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: A wrapper class for describing a COLLECTION.
+                Comment: Holds either a dcddm:COLLECTION or a reference to a dccdm:COLLECTION. 
+                To record multiple collections, separate statements should be used.  
+                The importance of each statement is expressed by the applied order, beginning with the most important one.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:COLLECTION"/>
+                <xs:element ref="dcddm:COLLECTION" minOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="isPartOf">
         <xs:annotation>
-            <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/isPartOf">
-                Definition: A related resource [Collection] in which the described resource is physically or logically included.
+            <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsisPartOf">
+                Definition: The described resource is a physical or logical part of the referenced resource.
+                A second collection that contains the current collection.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Comment: A wrapper class for describing a COLLECTION.
+                Comment: Holds either a dcddm:COLLECTION or a reference to a dccdm:COLLECTION. 
+                To record multiple collections, separate statements should be used.  
+                The importance of each statement is expressed by the applied order, beginning with the most important one.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:COLLECTION"/>
+                <xs:element ref="dcddm:COLLECTION" minOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
-    </xs:element>
-    <xs:element name="metadataEncodingScheme" type="xs:string">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: Encoding scheme for provided metadata of the collection´s objects.
-            </xs:documentation>
-        </xs:annotation>
     </xs:element>
     <xs:element name="associatedCollection">
         <xs:annotation>
@@ -466,14 +553,32 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:COLLECTION"/>
+                <xs:element ref="dcddm:COLLECTION" minOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="itemEncodingScheme" type="xs:string">
+    <xs:element name="metadataEncodingScheme" type="dcddm:encodingSchemeValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: Encding scheme used for modelling the collection´s objects. 
+                Definition: Encoding scheme used for modeling the object´s metadata of the collection.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Comment: Holds the name of a well established and documented schema (e.g. oai_dc, TEI-Header).
+                To record multiple schemes, separate statements should be used
+                The importance of each statement is expressed by the applied order, beginning with the most important one.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="itemEncodingScheme" type="dcddm:encodingSchemeValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Definition: Encoding scheme used for modeling the collection´s objects. 
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Comment: Holds the name of a well established and documented schema (e.g. LIDO, METS, TEI). 
+                Provided values are based on DARIAH-DE suggestions.
+                To record multiple schemes, separate statements should be used.
+                The importance of each statement is expressed by the applied order, beginning with the most important one.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
@@ -516,7 +621,7 @@
     <xs:element name="hasOPAC">
         <xs:annotation>
             <xs:documentation source="dcddm Data Model">
-                Definition: The metadata of the collection´s item are accessible via OPAC.
+                Definition: The metadata of the collection´s item are accessible via OPAC (Online Public Access Catalogue).
             </xs:documentation>
             <xs:documentation source="dcddm Data Model">
                 Comment: If the collection is not accessible through an OPAC this element should be ignored.
@@ -532,10 +637,11 @@
     <xs:element name="hasBEACON">
         <xs:annotation>
             <xs:documentation source="http://gbv.github.io/beaconspec/beacon.html" xml:lang="en">
-                Definition: BEACON is a data interchange format for large numbers of uniform links.
+                Definition: BEACON is a data interchange format for large numbers of uniform links. The collection provides a BEACON-file.
             </xs:documentation>
             <xs:documentation source="dcddm Data Model" xml:lang="en">
-                Comment: If there is no BEACON, don´t use this statement.
+                Comment: If the collection does not provide a BEACON-file this element should be ignored. 
+                If the collection provides more than one BEACON-file use several statements for each file.    
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -561,7 +667,7 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="reproductionPossibilities">
+    <xs:element name="hasReproductionPossibilities">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
                 Definition: The owner allows the users to make reproductions of the collection´s items or provides a reproduction service. The reproduction possibilities 
@@ -573,7 +679,7 @@
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="dcddm:description" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element ref="dcddm:description" minOccurs="1" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -634,6 +740,23 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
+    <xs:element name="associatedProject">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Definition: Names and shortly describes the project in which context the collection was created.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Comment: It is recomended to provide a short description of the project and to provide a reference (URL) where further information can be found.
+                To record information in multiple languages.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dcddm:description" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:hasWebPage" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
     <xs:element name="listMetadataFormats" type="xs:string">
         <xs:annotation>
             <xs:documentation source="dcddm Data Model" xml:lang="en">
@@ -650,95 +773,6 @@
                 Definition: Provides information about query policies, either in plain text or in form of URL to a webpage containing query policies.
             </xs:documentation>
         </xs:annotation>
-    </xs:element>
-    <xs:element name="spatialValues">
-        <xs:complexType mixed="true">
-            <xs:attribute name="vocabularyEncodingScheme" use="required">
-                <xs:simpleType>
-                    <xs:restriction base="xs:token">
-                        <xs:enumeration value="TGN">
-                            <xs:annotation>
-                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/TGN">
-                                    Definition:	The set of places specified by the Getty Thesaurus of Geographic Names.  
-                                </xs:documentation>
-                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/TGN">
-                                    See: http://www.getty.edu/research/tools/vocabulary/tgn/index.html
-                                </xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="GeoNames">
-                            <xs:annotation>
-                                <xs:documentation xml:lang="en">
-                                    Definition:	The set of places specified by GeoNames geographical database.
-                                </xs:documentation>
-                                <xs:documentation xml:lang="en">
-                                    See: http://www.geonames.org/
-                                </xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="GND">
-                            <xs:annotation>
-                                <xs:documentation xml:lang="en">
-                                    Definition:	The set of places specified by the Deutschen Nationalbibliothek.
-                                </xs:documentation>
-                                <xs:documentation xml:lang="en">
-                                    See: https://portal.dnb.de
-                                </xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:attribute>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="subjectValues">
-        <xs:complexType mixed="true">
-            <xs:attribute name="vocabularyEncodingScheme" use="required">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <!-- dmaus: Evtl. hier die DDC-Version noch angeben (e.g. DDC22) -->
-                        <xs:enumeration value="DDC">
-                            <xs:annotation>
-                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/DDC">
-                                    Definition:	The set of conceptual resources specified by the Dewey Decimal Classification.
-                                </xs:documentation>
-                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/DD">
-                                    See: http://www.oclc.org/dewey/
-                                </xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="LCC">
-                            <xs:annotation>
-                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/LCC">
-                                    Definition:	The set of conceptual resources specified by the Library of Congress Classification.   
-                                </xs:documentation>
-                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/LCC">
-                                    See: http://lcweb.loc.gov/catdir/cpso/lcco/lcco.html  
-                                </xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                        <xs:enumeration value="GND">
-                            <xs:annotation>
-                                <xs:documentation xml:lang="en">
-                                    Definition: The set of conceptual resources specified by the Deutschen Nationalbibliothek.
-                                </xs:documentation>
-                                <xs:documentation xml:lang="en" source="http://www.dnb.de/gnd">
-                                    See: http://www.dnb.de/gnd
-                                </xs:documentation>
-                            </xs:annotation>
-                        </xs:enumeration>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:attribute>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="temporalValue" type="dcddm:periodeValues">
-    <!-- ToDo: Documentation        -->
-    </xs:element>
-    <xs:element name="label">
-        <xs:complexType mixed="true">
-            <xs:attribute ref="xml:lang"/>
-        </xs:complexType>
     </xs:element>
     <xs:element name="address">
         <xs:annotation>
@@ -853,10 +887,13 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:element name="webPage" type="xs:anyURI">
+    <xs:element name="hasWebPage" type="xs:anyURI">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: Only provide webpages when you can be sure that they will stay online for as long as the collection description is meant to be public or you have the resources to keep them alive.
+                Definition: Provides a webpage related to the ressource.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Comment: Only provide webpages when you can be sure that they will stay online for as long as the collection description is meant to be public or you have the resources to keep them alive.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
@@ -873,6 +910,16 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element> 
+    <xs:element name="label" type="dcddm:simpleLiteral">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Definition: A label provides human readable information 
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Comment: To record information in multiple languages, use multiple labels and in each label associate the value string with the appropriate language tag.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
     
     <!--
     #############################################################
@@ -881,24 +928,141 @@
 -->
 
     <xs:complexType name="identifierValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Definition: This type is used to provide identifiers as text content and enables the identification of used norm data records by the usage of a matching normdataRecord-attribute. 
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Definition: In case the provided identifier is taken form a normdata record, the value (string) must follow the norm data record´s syntax encoding scheme.  
+            </xs:documentation>
+        </xs:annotation>
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute name="normdataRecord" default="none">
                     <xs:simpleType>
                         <xs:restriction base="xs:string">
-                            <xs:enumeration value="GND"/>
-                            <xs:enumeration value="VIAF"/>
-                            <xs:enumeration value="other"/>
-                            <xs:enumeration value="none"/>
+                            <xs:enumeration value="GND">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en" source="http://www.dnb.de/EN/Standardisierung/GND/gnd_node.html">
+                                        Definition: GND stands for INTEGRATED AUTHORITY FILE or "Gemeinsame Normdaten Datei" in German and is an authority file for Persons, Corporate bodies, Conferences and Events, Geographic Information, Topics and Works. It is operated cooperatively by the German National Library. 
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                            <xs:enumeration value="VIAF">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en" source="http://www.oclc.org/viaf.en.html">
+                                        Definition: VIAF stands vor VIRTUAL INTERNATIONAL AUTHORITY FILE and  is an international service designed to provide convenient access to the world's major name authority files. 
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                            <xs:enumeration value="other">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en" source="dcddm Data Model">
+                                        Definition: The used identifier is taken from another norm data record then GND and VIAF.
+                                    </xs:documentation>
+                                    <xs:documentation xml:lang="en" source="dcddm Data Model">
+                                        Comment: Please contact DARIAH-DE so the norm data record of your choice might become part of the DCDDM. 
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                            <xs:enumeration value="none">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en" source="dcddm Data Model">
+                                        Definition: Use this attribute in case your identifier is not taken from any norm data record. 
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    <xs:complexType name="encodingSchemeValues">
-        
-    </xs:complexType>
+    <xs:element name="spatialValues">
+        <xs:complexType mixed="true">
+            <xs:attribute name="vocabularyEncodingScheme" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="TGN">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/TGN">
+                                    Definition:	The set of places specified by the Getty Thesaurus of Geographic Names.  
+                                </xs:documentation>
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/TGN">
+                                    See: http://www.getty.edu/research/tools/vocabulary/tgn/index.html
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GeoNames">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    Definition:	The set of places specified by GeoNames geographical database.
+                                </xs:documentation>
+                                <xs:documentation xml:lang="en">
+                                    See: http://www.geonames.org/
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GND">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    Definition:	The set of places specified by the Deutschen Nationalbibliothek.
+                                </xs:documentation>
+                                <xs:documentation xml:lang="en">
+                                    See: https://portal.dnb.de
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="subjectValues">
+        <xs:complexType mixed="true">
+            <xs:attribute name="vocabularyEncodingScheme" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <!-- dmaus: Evtl. hier die DDC-Version noch angeben (e.g. DDC22) -->
+                        <xs:enumeration value="DDC">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/DDC">
+                                    Definition:	The set of conceptual resources specified by the Dewey Decimal Classification.
+                                </xs:documentation>
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/DD">
+                                    See: http://www.oclc.org/dewey/
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="LCC">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/LCC">
+                                    Definition:	The set of conceptual resources specified by the Library of Congress Classification.   
+                                </xs:documentation>
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/LCC">
+                                    See: http://lcweb.loc.gov/catdir/cpso/lcco/lcco.html  
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="GND">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="en">
+                                    Definition: The set of conceptual resources specified by the Deutschen Nationalbibliothek.
+                                </xs:documentation>
+                                <xs:documentation xml:lang="en" source="http://www.dnb.de/gnd">
+                                    See: http://www.dnb.de/gnd
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="date" type="dcddm:periodeValues">
+        <!-- ToDo: Documentation        -->
+    </xs:element>
+    <xs:complexType name="encodingSchemeValues"/>
     <xs:simpleType name="RESTMethodsValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
@@ -1115,7 +1279,10 @@
     <xs:complexType name="simpleLiteral">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://dublincore.org/schemas/xmls/qdc/dc.xsd">
-                Definition: A complexType which permits mixed content and makes the xml:lang attribute available.It disallows child elements.
+                Definition: This is the standard type for all of the DCDDM elements which provide any type of free text as it permits text content only with optional xml:lang attribute.
+            </xs:documentation>
+            <xs:documentation>
+                Comment: The usage of a xml:lang attribute is recommended.
             </xs:documentation>
         </xs:annotation>
         <xs:complexContent mixed="true">
@@ -1161,9 +1328,20 @@
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="periodeValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Definition: This type is used to validate dates against ISO8601. It validates strings against a special regular expressions (RegEx) patterns.
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                RegEx Pattersn: 
+                [\d{,4}][-\d\d]+[-\d\d]+(/|--)[\d{,4}][-\d\d]+[-\d\d]+
+                or 
+                [\d{,4}][-\d\d]+[-\d\d]+(/)*
+            </xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:pattern value="[\d{,4}][-\d\d]+[-\d\d]+(/|--)[\d{,4}][-\d\d]+[-\d\d]+"/>
-            <xs:pattern value="[\d{,4}][-\d\d]+[-\d\d]+(/)*"></xs:pattern>
+            <xs:pattern value="[\d{,4}][-\d\d]+[-\d\d]+(/)*"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:complexType name="spatialValues">
@@ -1257,9 +1435,20 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="free"/>
             <xs:enumeration value="free but registration needed"/>
-            <xs:enumeration value="paid collection, but free samples/free preview"/>
-            <xs:enumeration value="paid content"/>
-            <xs:enumeration value="paywall"/>
+            <xs:enumeration value="soft paywall">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://en.wikipedia.org/wiki/Paywall">
+                        Definition: A paywall is a system that prevents Internet users from accessing webpage content without a paid subscription. [...]  "soft" paywalls allow more flexibility in what users can view without subscribing, such as selective free content and/or a limited number of articles per month, or the sampling of several pages of a book or paragraphs of an article.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="hard paywall">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="http://en.wikipedia.org/wiki/Paywall">
+                        Definition: A paywall is a system that prevents Internet users from accessing webpage content without a paid subscription. There are both "hard" and "soft" paywalls in use. "Hard" paywalls allow minimal to no access to content without subscription.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
             <xs:enumeration value="not specified"/>
         </xs:restriction>
     </xs:simpleType>
@@ -1342,7 +1531,7 @@
                         Definition: An aggregation of resources.
                     </xs:documentation>
                     <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Collection">
-                        Comment: A collection is described as a group; its parts may also be separately described..
+                        Comment: A collection is described as a group; its parts may also be separately described.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
@@ -1389,10 +1578,10 @@
             <xs:enumeration value="MovingImage">
                 <xs:annotation>
                     <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/MovingImage">
-                        A series of visual representations imparting an impression of motion when shown in succession.
+                        Definition: A series of visual representations imparting an impression of motion when shown in succession.
                     </xs:documentation>
                     <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/MovingImage">
-                        Examples include animations, movies, television programs, videos, zoetropes, or visual output from a simulation. Instances of the type Moving Image must also be describable as instances of the broader type Image.
+                        Comment: Examples include animations, movies, television programs, videos, zoetropes, or visual output from a simulation. Instances of the type Moving Image must also be describable as instances of the broader type Image.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
@@ -1429,7 +1618,8 @@
             <xs:enumeration value="Sound">
                 <xs:annotation>
                     <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Sound">
-                        Definition:	A resource primarily intended to be heard.</xs:documentation>
+                        Definition:	A resource primarily intended to be heard.
+                    </xs:documentation>
                     <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Sound">
                         Comment: Examples include a music playback file format, an audio compact disc, and recorded speech or sounds.
                     </xs:documentation>
