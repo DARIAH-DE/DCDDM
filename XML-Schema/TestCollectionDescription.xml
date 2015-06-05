@@ -133,6 +133,6 @@
     <itemsRights>Attribution Non-Commercial v3.0(CC BY-NC)</itemsRights>
     <hasWebPage>http://www.die-fruchtbringende-gesellschaft.de/index.php?category_id=4&amp;article_id=15</hasWebPage>
     <hasBEACON>
-        <baseURL></baseURL>
+        <baseURL>http://dbs.hab.de/padmin/fruchtbringer/beacon.php</baseURL>
     </hasBEACON>
 </COLLECTION>
