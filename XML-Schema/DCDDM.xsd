@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:dcddm="http://schema.dariah.eu/colreg/dcddm/" xmlns:dcterms="http://purl.org/dc/terms/"
-    xmlns:cld="http://purl.org/cld/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:mods="http://www.loc.gov/mods/v3" xmlns:dcldf="http://purl.org/cld/freq"
-    xmlns:vcard="http://www.w3.org/2006/vcard/"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:dcddm="http://schema.dariah.eu/colreg/dcddm/"
     targetNamespace="http://schema.dariah.eu/colreg/dcddm/" elementFormDefault="qualified"
     attributeFormDefault="unqualified">
 
