@@ -34,7 +34,7 @@
                 Definition:	An aggregation of resources.
             </xs:documentation>
             <xs:documentation xml:lang="en" source="http://purl.org/dc/dcmitype/Collection">
-                Comment:In the DARIAH Collection Description Data Model a dcddm:COLLECTION is understood as an entity or class, defined by different XX elements, which themselves can contain their own attributes and child elements. Entities or classes differ from other complex elements therefore only in one point. Entities or classes contain at least one unique and unambiguous identifier which allows and supports the re-usability of those entities. 
+                Comment:In the DARIAH Collection Description Data Model a dcddm:COLLECTION is understood as an entity or class, defined by different XX elements, which themselves can contain their own attributes and child elements. Entities or classes differ from other complex elements therefore only in one point: Entities or classes contain at least one unique and unambiguous identifier which allows and supports the re-usability of those entities. 
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -85,6 +85,7 @@
                 <xs:element ref="dcddm:hasWebPage" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="dcddm:hasOAI-PMH" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="dcddm:hasREST-API" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="dcddm:hasSPARQLEndpoint" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="dcddm:hasOPAC" minOccurs="0" maxOccurs="1"/>
                 <xs:element ref="dcddm:hasBEACON" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="dcddm:hasReadingRoom" minOccurs="0" maxOccurs="unbounded"/>
@@ -280,7 +281,7 @@
     <xs:element name="accrualMethod" type="dcddm:accrualMethodsValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/collection-application-profile/#coldctermsaccrualMethod">
-                Definition: A method by which items are added to a collection.</xs:documentation>
+                Definition:A fixed vocabulary naming methods by which items are added to a collection.</xs:documentation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
                 Comment: Recommended best practice is to use a value from a standard vocabulary provided and maintained by DARIAH-DE but based on http://dublincore.org/groups/collections/accrual-method/. 
                 A value string must be provided.
@@ -602,7 +603,8 @@
         <xs:annotation>
             <xs:documentation source="dcddm Data Model" xml:lang="en">
                 Definition: The (metadata of the) collection´s item are accessible via REST-API
-            </xs:documentation><xs:documentation source="dcddm Data Model" xml:lang="en">
+            </xs:documentation>
+            <xs:documentation source="dcddm Data Model" xml:lang="en">
                 Comment: If the collection does not provide a REST-API this element should be ignored.
             </xs:documentation>
         </xs:annotation>
@@ -616,13 +618,23 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    <xs:element name="hasSPARQLEndpoint" type="xs:anyURI">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="http://en.wikipedia.org/wiki/SPARQL">
+                Definition: The collection´s item are accessible via SPARQL-Endpoint. SPARQL is a recursive synonym for SPARQL Protocol and RDF Query Language. A SPARQL-Endpoint is a service that accepts SPARQL queries and returns results. The element provides the SPARQL-Endpoint´s URL.
+            </xs:documentation>
+            <xs:documentation source="dcddm Data Model" xml:lang="en">
+                Comment: If the collection does not provide a SPARQL-Endpoint this element should be ignored.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
     <xs:element name="hasOPAC">
         <xs:annotation>
             <xs:documentation source="dcddm Data Model">
                 Definition: The metadata of the collection´s item are accessible via OPAC (Online Public Access Catalogue).
             </xs:documentation>
             <xs:documentation source="dcddm Data Model">
-                Comment: If the collection is not accessible through an OPAC this element should be ignored.
+                Comment: If the collection is not accessible through a SPARQL-Endpoint this element should be ignored.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -745,7 +757,7 @@
             </xs:documentation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
                 Comment: It is recomended to provide a short description of the project and to provide a reference (URL) where further information can be found.
-                To record information in multiple languages.
+                To record information in multiple languages use several statements.
             </xs:documentation>
         </xs:annotation>
         <xs:complexType>
@@ -918,67 +930,9 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
-    
-    <!--
-    #############################################################
-    #                    Types and Values                       #
-    #############################################################
--->
-
-    <xs:complexType name="identifierValues">
-        <xs:annotation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: This type is used to provide identifiers as text content and enables the identification of used norm data records by the usage of a matching normdataRecord-attribute. 
-            </xs:documentation>
-            <xs:documentation xml:lang="en" source="dcddm Data Model">
-                Definition: In case the provided identifier is taken form a normdata record, the value (string) must follow the norm data record´s syntax encoding scheme.  
-            </xs:documentation>
-        </xs:annotation>
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute name="normdataRecord" default="none">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:enumeration value="GND">
-                                <xs:annotation>
-                                    <xs:documentation xml:lang="en" source="http://www.dnb.de/EN/Standardisierung/GND/gnd_node.html">
-                                        Definition: GND stands for INTEGRATED AUTHORITY FILE or "Gemeinsame Normdaten Datei" in German and is an authority file for Persons, Corporate bodies, Conferences and Events, Geographic Information, Topics and Works. It is operated cooperatively by the German National Library. 
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:enumeration>
-                            <xs:enumeration value="VIAF">
-                                <xs:annotation>
-                                    <xs:documentation xml:lang="en" source="http://www.oclc.org/viaf.en.html">
-                                        Definition: VIAF stands vor VIRTUAL INTERNATIONAL AUTHORITY FILE and  is an international service designed to provide convenient access to the world's major name authority files. 
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:enumeration>
-                            <xs:enumeration value="other">
-                                <xs:annotation>
-                                    <xs:documentation xml:lang="en" source="dcddm Data Model">
-                                        Definition: The used identifier is taken from another norm data record then GND and VIAF.
-                                    </xs:documentation>
-                                    <xs:documentation xml:lang="en" source="dcddm Data Model">
-                                        Comment: Please contact DARIAH-DE so the norm data record of your choice might become part of the DCDDM. 
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:enumeration>
-                            <xs:enumeration value="none">
-                                <xs:annotation>
-                                    <xs:documentation xml:lang="en" source="dcddm Data Model">
-                                        Definition: Use this attribute in case your identifier is not taken from any norm data record. 
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:enumeration>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:attribute>
-            </xs:extension>
-        </xs:simpleContent>
-    </xs:complexType>
     <xs:element name="spatialValues">
         <xs:complexType mixed="true">
-            <xs:attribute name="vocabularyEncodingScheme" use="required">
+            <xs:attribute name="normdataRecord" use="required">
                 <xs:simpleType>
                     <xs:restriction base="xs:token">
                         <xs:enumeration value="TGN">
@@ -1018,7 +972,7 @@
     </xs:element>
     <xs:element name="subjectValues">
         <xs:complexType mixed="true">
-            <xs:attribute name="vocabularyEncodingScheme" use="required">
+            <xs:attribute name="normdataRecord" use="required">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
                         <!-- dmaus: Evtl. hier die DDC-Version noch angeben (e.g. DDC22) -->
@@ -1027,28 +981,28 @@
                                 <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/DDC">
                                     Definition:	The set of conceptual resources specified by the Dewey Decimal Classification.
                                 </xs:documentation>
-                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/DD">
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/DDC">
                                     See: http://www.oclc.org/dewey/
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
-                        <xs:enumeration value="LCC">
+                        <xs:enumeration value="LCSH">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/LCC">
-                                    Definition:	The set of conceptual resources specified by the Library of Congress Classification.   
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/LCSH">
+                                    Definition:	The set of labeled concepts specified by the Library of Congress Subject Headings.   
                                 </xs:documentation>
-                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/LCC">
-                                    See: http://lcweb.loc.gov/catdir/cpso/lcco/lcco.html  
+                                <xs:documentation xml:lang="en" source="http://purl.org/dc/terms/LCCH">
+                                    See: http://id.loc.gov/authorities/subjects.html   
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
                         <xs:enumeration value="GND">
                             <xs:annotation>
-                                <xs:documentation xml:lang="en">
+                                <xs:documentation xml:lang="en" source="dcddm Data Model">
                                     Definition: The set of conceptual resources specified by the Deutschen Nationalbibliothek.
                                 </xs:documentation>
                                 <xs:documentation xml:lang="en" source="http://www.dnb.de/gnd">
-                                    See: http://www.dnb.de/gnd
+                                    See: https://portal.dnb.de
                                 </xs:documentation>
                             </xs:annotation>
                         </xs:enumeration>
@@ -1058,9 +1012,96 @@
         </xs:complexType>
     </xs:element>
     <xs:element name="date" type="dcddm:periodeValues">
-        <!-- ToDo: Documentation        -->
+       <xs:annotation>
+           <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-date" xml:lang="en">
+               Definition: A point or period of time associated with an event in the lifecycle of the resource.
+           </xs:documentation>
+           <xs:documentation source="http://dublincore.org/documents/dcmi-terms/#terms-date" xml:lang="en">
+               Comment: Date may be used to express temporal information at any level of granularity. In the DCDDM a date must follow ISO8601. See http://www.w3.org/TR/NOTE-datetime. 
+           </xs:documentation>
+       </xs:annotation>
     </xs:element>
-    <xs:complexType name="encodingSchemeValues"/>
+    <!--
+    #############################################################
+    #                    Types and Values                       #
+    #############################################################
+-->
+
+    <xs:complexType name="identifierValues">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Definition: This type is used to provide identifiers as text content and enables the identification of used norm data records by the usage of a matching normdataRecord-attribute. 
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Definition: In case the provided identifier is taken form a normdata record, the value (string) must follow the norm data record´s syntax encoding scheme.  
+            </xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="normdataRecord" default="none">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en" source="dcddm Data Model">
+                            Definition: The attribute provides information about the used norm data record.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="GND">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en" source="http://www.dnb.de/EN/Standardisierung/GND/gnd_node.html">
+                                        Definition: GND stands for INTEGRATED AUTHORITY FILE or "Gemeinsame Normdaten Datei" in German and is an authority file for Persons, Corporate bodies, Conferences and Events, Geographic Information, Topics and Works. It is operated cooperatively by the German National Library. 
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                            <xs:enumeration value="VIAF">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en" source="http://www.oclc.org/viaf.en.html">
+                                        Definition: VIAF stands vor VIRTUAL INTERNATIONAL AUTHORITY FILE and  is an international service designed to provide convenient access to the world's major name authority files. 
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                            <xs:enumeration value="other">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en" source="dcddm Data Model">
+                                        Definition: The used identifier is taken from another norm data record then GND and VIAF.
+                                    </xs:documentation>
+                                    <xs:documentation xml:lang="en" source="dcddm Data Model">
+                                        Comment: Please contact DARIAH-DE so the norm data record of your choice might become part of the DCDDM. 
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                            <xs:enumeration value="none">
+                                <xs:annotation>
+                                    <xs:documentation xml:lang="en" source="dcddm Data Model">
+                                        Definition: Use this attribute in case your identifier is not taken from any norm data record. 
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="encodingSchemeValues">
+<!--! ToDo: Documentation and creating a controlled vocabulary, maybe by harvesting the schema-registry       -->
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Definition: A list of encoding schemes, used to model objects and the object´s metadata.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="TEI-P4">
+                <xs:annotation>
+                    <xs:documentation>
+<!--        ToDO: link zu specification / schema                -->
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="TEI-P5"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
     <xs:simpleType name="RESTMethodsValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="dcddm Data Model">
@@ -1101,18 +1142,10 @@
     <xs:simpleType name="accrualPeriodicityValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/">
-                Definition: A set of frequencies with which a repeatable event occurs. 
-                See alos: MARC 21 Concise Holdings: Caption and Pattern Fields (853-855)
+                Definition: A fixed vocabulary naming frequencies with which a repeatable event occurs. 
             </xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:enumeration value="triennial">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/#freqtriennial">
-                        Definition: The event occurs every three years.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:enumeration>
             <xs:enumeration value="triennial">
                 <xs:annotation>
                     <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/frequency/#freqtriennial">
@@ -1232,15 +1265,33 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="periodical"/>
-            <xs:enumeration value="finalized/stable"/>
-            <xs:enumeration value="not specified"/>
+            <xs:enumeration value="periodical">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="dcddm Data Model">
+                        Definition: The event occurs at intervals which are not described in this list.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="finalized/stable">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="dcddm Data Model">
+                        Definition: The collection is complete and items are no longer added to the collection. 
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="not specified">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="dcddm Data Model">
+                        Definition: No information can be provided. 
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="accrualPolicyValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/accrual-policy/">
-                Definition: A set of policies governing the addition of items are added to a collection.
+                Definition: A fixed vocabulary naming policies governing the addition of items are added to a collection.
             </xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
@@ -1292,37 +1343,27 @@
             </xs:restriction>
         </xs:complexContent> 
     </xs:complexType>
-    <xs:simpleType name="serviceFunctionValues">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="READ"/>
-            <xs:enumeration value="WRITE"/>
-            <xs:enumeration value="READ and WRITE"/>
-            <xs:enumeration value="INgEST"/>
-            <xs:enumeration value="CRUD"/>
-            <xs:enumeration value="other"/>
-        </xs:restriction>
-    </xs:simpleType>
-    <xs:simpleType name="servicaAccessMethodValues">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="OAI-PMH"/>
-            <xs:enumeration value="OAI-ORE"/>
-            <xs:enumeration value="Atom Syndication Format"/>
-            <xs:enumeration value="Canocical Text Services"/>
-            <xs:enumeration value="RESTful API"/>
-            <xs:enumeration value="SKOS/RDF"/>
-            <xs:enumeration value="other"/>
-        </xs:restriction>
-    </xs:simpleType>
-    <xs:simpleType name="locationTypeValues">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="location"/>
-<!-- hier sollten doch noch mehr Werte zur Auswahl stehen, nachschauen in der 'Dokumentation' und in der CR-GUI            -->
-        </xs:restriction>
-    </xs:simpleType>
     <xs:simpleType name="agentTypeValues">
+        <xs:annotation>
+            <xs:documentation source="dcddm Data Model" xml:lang="en">
+                Definition: Fixed vocabulary naming possible types of agents.
+            </xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:enumeration value="person"/>
-            <xs:enumeration value="organisation"/>
+            <xs:enumeration value="person">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="dcddm Data Model">
+                        Definition: The Agent is a person.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="organisation">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en" source="dcddm Data Model">
+                        Definition: The Agent is any kind of organisation or institution. 
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="periodeValues">
@@ -1342,42 +1383,6 @@
             <xs:pattern value="[\d{,4}][-\d\d]+[-\d\d]+(/)*"/>
         </xs:restriction>
     </xs:simpleType>
-    <xs:complexType name="spatialValues">
-        <!-- dmaus: Keine separaten Elemente, sondern Attribut "encodingScheme" -->
-        <!-- dmaus: Attribut ist optional, wenn nicht verwendet dann Freitext -->
-        <!-- dmaus: Notwendigkeit eines Label ist zu diskutieren -->
-        <xs:sequence>
-            <xs:element name="geonames" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="geonames-id" type="xs:token" maxOccurs="1">
-<!-- besteht die Geonames-ID nur als Zahlen bzw. kann als Datentyp xs:int festegelgt werden?    -->
-                        </xs:element>
-                        <xs:element name="label" type="dcddm:simpleLiteral" minOccurs="1"
-                            maxOccurs="unbounded">
-                            <xs:annotation>
-                                <xs:documentation>Definition: Name of the Place in plain text</xs:documentation>
-                            </xs:annotation>
-                        </xs:element>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="getty" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="getty-id" type="xs:token" maxOccurs="1">
- <!-- besteht die Getty-ID nur als Zahlen bzw. kann als Datentyp xs:int festegelgt werden?    -->
-                        </xs:element>
-                        <xs:element name="label" type="dcddm:simpleLiteral">
-                            <xs:annotation>
-                                <xs:documentation>Definition: Name of the Place in plain text</xs:documentation>
-                            </xs:annotation>
-                        </xs:element>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
     <xs:simpleType name="accrualMethodsValues">
         <xs:annotation>
             <xs:documentation xml:lang="en" source="http://dublincore.org/groups/collections/accrual-method/">
@@ -1430,6 +1435,11 @@
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="accessRightsValues">
+        <xs:annotation>
+            <xs:documentation source="dcddm Data Model" xml:lang="en">
+                Definition: A set of values naming possible restrictions while accessing teh collection´s items.
+            </xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="free"/>
             <xs:enumeration value="free but registration needed"/>
@@ -1654,6 +1664,11 @@
         <xs:simpleContent>
             <xs:extension base="dcddm:languageValuesType">
                 <xs:attribute name="isoStandard" use="required">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en" source="dcddm Data Model">
+                            Definition: The attribute provides information about the used isoStandard.
+                        </xs:documentation>
+                    </xs:annotation>
                     <xs:simpleType>
                         <xs:restriction base="xs:string">
                             <xs:enumeration value="ISO639-1"/>
@@ -1665,11 +1680,16 @@
         </xs:simpleContent>
     </xs:complexType>
     <xs:simpleType name="collectionTypeValues">
+        <xs:annotation>
+            <xs:documentation source="dcddm Data Model" xml:lang="en">
+                Definition: Fixed vocabulary naming possibly types of collections.
+            </xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="Collection"/>
             <!--    Siehe dazu R.4.3.2        -->
-            <xs:enumeration value="HoldingCollection"/>
-            <xs:enumeration value="ReferentialCollection"/>
+            <!--<xs:enumeration value="HoldingCollection"/>
+            <xs:enumeration value="ReferentialCollection"/>-->
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

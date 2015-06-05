@@ -3,96 +3,136 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://schema.dariah.eu/colreg/dclap/ DCDDM.xsd">
     <title xml:lang="deu">Mitglieder der Fruchtbringenden Gesellschaft</title>
-    <collectionDescriptionCreated>2006</collectionDescriptionCreated>
+    <collectionDescriptionCreated>2015-06-05</collectionDescriptionCreated>
     <description xml:lang="deu">Personendatenbank zu den Mitgliedern der Fruchtbringenden Gesellschaft. Die Fruchtbringende Gesellschaft war die erste, mit 890 Mitgliedern auch größte deutsche Sprachakademie. Aufgrund ihrer hohen Mitgliederzahl aus dem Adels- und Reichsfürstenstand war sie höfisch, politisch, militärisch und diplomatisch vernetzt. Der FG standen die italienischen Renaissance-Akademien Modell, sie knüpfte aber auch an  Ritterorden, Adelsgesellschaften und Bruderschaften an und fungierte zum Teil wie eine Gelehrtengesellschaft und literarische Vereinigung.</description>
     <hasContact>
-        <hasWebPage></hasWebPage>
-    </hasContact>
-    <hasContact>
-        <email></email>
-    </hasContact>
-    <hasContact>
-        <AGENT>
-            <agentType>organisation</agentType>
-            <name></name>
-        </AGENT>
+        <hasWebPage>http://www.hab.de/de/home/ueber-uns/kontakte-und-organisation/dr-andreas-herz.html</hasWebPage>
     </hasContact>
     <collectionType>Collection</collectionType>
-    
-    <acronym>MdFG</acronym>
-    <size>891</size>
-    <language isoStandard="ISO639-3">deu</language>
-    <itemType>Dataset</itemType>
-    <collectionDescriptionRights>Attribution Non-Commercial Share Alike v3.0(CC BY-NC-SA)</collectionDescriptionRights>
-    <itemsRights>Attribution Non-Commercial Share Alike v3.0(CC BY-NC-SA)</itemsRights>
+    <collectionDescriptionRights>Attribution Share Alike v3.0(CC BY-SA)</collectionDescriptionRights>
     <accessRights>free</accessRights>
-    <accrualMethod>itemcreation</accrualMethod>
-    <accrualPeriodicity>finalized/stable</accrualPeriodicity>
-    <accrualPolicy>active</accrualPolicy>
-    <audience xml:lang="deu">Frühneuzeitforschung</audience>
-    <audience xml:lang="deu">Germanistik</audience>
     <subject>
-        <subjectValues vocabularyEncodingScheme="GND">4148875-1</subjectValues>
+        <subjectValues normdataRecord="GND">4148875-1</subjectValues>
         <label xml:lang="deu">Datensammlung</label>
     </subject>
     <subject>
-        <subjectValues vocabularyEncodingScheme="DDC">900</subjectValues>
-        <label xml:lang="eng">Geography &amp; history</label>
+        <subjectValues normdataRecord="LCSH">sh85061212</subjectValues>
+        <label xml:lang="eng">History</label>
+        <label xml:lang="deu">Geschichte</label>
     </subject>
     <spatial>
-        <spatialValues vocabularyEncodingScheme="GND">2035457-5</spatialValues>
-        <label>Heiliges Römisches Reich</label>
+        <spatialValues normdataRecord="GND">2035457-5</spatialValues>
+        <label xml:lang="deu">Heiliges Römisches Reich</label>
     </spatial>
     <spatial>
-        <spatialValues vocabularyEncodingScheme="GeoNames">2921044</spatialValues>
-        <label>Deutschland</label>
+        <spatialValues normdataRecord="GeoNames">2921044</spatialValues>
+        <label xml:lang="eng">Deutschland</label>
+        <label xml:lang="eng">Germany</label>
     </spatial>
     <temporal>
-        <temporalValue>1492/1789</temporalValue>
-        <label>Frühe Neuzeit</label>
+        <date>1492-1789</date>
+        <label xml:lang="deu">Frühe Neuzeit</label>
     </temporal>
     <collectionCreated>
-        <temporalValue>2006</temporalValue>
+        <date>2006/</date>
+        <label xml:lang="deu">laufend ab 2006</label>
     </collectionCreated>
     <dateItemsCreated>
-        <temporalValue>2006/</temporalValue>
-        <label>laufend ab 2006</label>
+        <date>2006/</date>
+        <label xml:lang="deu">laufend ab 2006</label>
     </dateItemsCreated>
+    <itemType>Dataset</itemType>
+    <itemType>Text</itemType>
+    <size>890</size>
+    <language isoStandard="ISO639-3">deu</language>
     <creator>
         <AGENT>
             <agentType>person</agentType>
             <name>Herz</name>
             <forename>Andreas</forename>
-            <providedIdentifier normDataRecord="GND">1044494867</providedIdentifier>
+            <identifier normdataRecord="GND">1044494867</identifier>
+            <hasWebPage>http://www.hab.de/de/home/ueber-uns/kontakte-und-organisation/dr-andreas-herz.html</hasWebPage>
+        </AGENT>
+    </creator>
+    <creator>
+        <AGENT>
+            <agentType>person</agentType>
+            <name>Conermann</name>
+            <forename>Klaus</forename>
+            <identifier normdataRecord="GND">1044493232</identifier>
+        </AGENT>
+    </creator>
+    <creator>
+        <AGENT>
+            <agentType>person</agentType>
+            <name>Ball</name>
+            <forename>Gabriele</forename>
+            <identifier normdataRecord="GND">1038114187</identifier>
+        </AGENT>
+    </creator>
+    <owner>
+        <AGENT>
+            <agentType>organisation</agentType>
+            <name>Herzog August Bibliothek Wolfenbüttel</name>
+            <identifier normdataRecord="GND">8989-8</identifier>
             <address>
                 <street>Lessingplatz</street>
                 <houseNumber>1</houseNumber>
                 <postalCode>38304</postalCode>
                 <place>
                     <spatial>
-                        <spatialValues vocabularyEncodingScheme="GeoNames">6557395</spatialValues>
-                        <label xml:lang="deu">Wolfenbüttel</label>
+                        <spatialValues normdataRecord="GeoNames">6557395</spatialValues>
+                        <label>Wolfenbüttel</label>
                     </spatial>
                 </place>
                 <country>
                     <spatial>
-                        <spatialValues vocabularyEncodingScheme="GeoNames">2921044</spatialValues>
-                        <label xml:lang="deu">Englisch</label>
+                        <spatialValues normdataRecord="GeoNames">2921044</spatialValues>
+                        <label>Deutschland</label>
                     </spatial>
                 </country>
             </address>
+            <hasWebPage>http://www.hab.de/</hasWebPage>
         </AGENT>
-    </creator>
-    <hasOAI-PMH>
+    </owner>
+    <owner>
+        <AGENT>
+            <agentType>organisation</agentType>
+            <name>Sächsische Akademie der Wissenschaften</name>
+            <identifier normdataRecord="GND">37863-X</identifier>
+            <hasWebPage>http://www.saw-leipzig.de/</hasWebPage>
+        </AGENT>
+    </owner>
+    <audience xml:lang="deu">Historiker</audience>
+    <audience xml:lang="deu">Germanisten</audience>
+    <isLocatedAt>
+        <address>
+                <street>Lessingplatz</street>
+                <houseNumber>1</houseNumber>
+                <postalCode>38304</postalCode>
+                <place>
+                    <spatial>
+                        <spatialValues normdataRecord="GeoNames">6557395</spatialValues>
+                        <label>Wolfenbüttel</label>
+                    </spatial>
+                </place>
+                <country>
+                    <spatial>
+                        <spatialValues normdataRecord="GeoNames">2921044</spatialValues>
+                        <label>Deutschland</label>
+                    </spatial>
+                </country>
+            </address>
+    </isLocatedAt>
+    <associatedProject>
+        <hasWebPage>http://www.die-fruchtbringende-gesellschaft.de/</hasWebPage>
+    </associatedProject>
+    <accrualMethod>itemcreation</accrualMethod>
+    <accrualPolicy>closed</accrualPolicy>
+    <accrualPeriodicity>finalized/stable</accrualPeriodicity>
+    <itemsRights>Attribution Non-Commercial v3.0(CC BY-NC)</itemsRights>
+    <hasWebPage>http://www.die-fruchtbringende-gesellschaft.de/index.php?category_id=4&amp;article_id=15</hasWebPage>
+    <hasBEACON>
         <baseURL></baseURL>
-        <OAISet></OAISet>
-        <listMetadataFormats></listMetadataFormats>
-    </hasOAI-PMH>
-    <hasREST-API>
-        <baseURL>fsdaf</baseURL>
-        <supportedRESTMethods>GET</supportedRESTMethods>
-    </hasREST-API>
-    <hasOPAC>
-        <baseURL></baseURL>
-    </hasOPAC>
+    </hasBEACON>
 </COLLECTION>

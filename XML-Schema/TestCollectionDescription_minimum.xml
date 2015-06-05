@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<COLLECTION xmlns="http://schema.dariah.eu/colreg/dcddm/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://schema.dariah.eu/colreg/dclap/ DCDDM.xsd">
+    <title xml:lang="deu">Mitglieder der Fruchtbringenden Gesellschaft</title>
+    <collectionDescriptionCreated>2015-06-05</collectionDescriptionCreated>
+    <description xml:lang="deu">Personendatenbank zu den Mitgliedern der Fruchtbringenden Gesellschaft. Die Fruchtbringende Gesellschaft war die erste, mit 890 Mitgliedern auch größte deutsche Sprachakademie. Aufgrund ihrer hohen Mitgliederzahl aus dem Adels- und Reichsfürstenstand war sie höfisch, politisch, militärisch und diplomatisch vernetzt. Der FG standen die italienischen Renaissance-Akademien Modell, sie knüpfte aber auch an  Ritterorden, Adelsgesellschaften und Bruderschaften an und fungierte zum Teil wie eine Gelehrtengesellschaft und literarische Vereinigung.</description>
+    <hasContact>
+        <hasWebPage>http://www.hab.de/de/home/ueber-uns/kontakte-und-organisation/dr-andreas-herz.html</hasWebPage>
+    </hasContact>
+    <collectionType>Collection</collectionType>
+    <collectionDescriptionRights>Attribution Share Alike v3.0(CC BY-SA)</collectionDescriptionRights>
+    <accessRights>free</accessRights>
+</COLLECTION>
