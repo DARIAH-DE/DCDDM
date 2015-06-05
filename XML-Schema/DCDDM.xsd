@@ -15,6 +15,7 @@
             History: Based on the Dublin Core Collection Application Profile; the DARIAH-DE Collection Registry (GUI) and an internal DARIAH-DE paper/wiki-page "DARIAH-DE Collection Level Description Application
             Profile" 
             Creator: Peter Andorfer
+            See: https://github.com/csae8092/DCDDM
         </xs:documentation>
     </xs:annotation>
     
