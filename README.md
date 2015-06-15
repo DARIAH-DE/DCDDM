@@ -10,9 +10,9 @@ Another considerable aspect of providing such a broad range information is that 
 On the other hand, the level of detail or number of providable information depends also on the collection itself, the collection´s items and the infrastructure which maintains the collection. Institutions, which have at its disposal sufficient personnel and funds, have better resources to describe in detail their collections, than would an independent scholar with his or her collection of notes made while writing a small article.  
 To ease the workload of describing collections the DCDDM is meant to be used as a data model for applications dealing with the creation, publication and administration of collection descriptions (e.g. the DARIAH-DE Collection Registry).Likewise the DCDDM should provide sufficient guidelines to create collection descriptions independent of any tool or applications and their unforeseeable lifetime.  
 Given the broad definition of collection and the consequently many possible varieties of collections, the DCDDM has to achieve the following objectives:  
-	1. The data model should allow descriptions of digital AND physical collections.  
-	2. The description should offer general descriptive information concerning the content of the collection or the collection's items, such as:  
-    	* topics/subjects which are covered by the collection;  
-    	* locations and regions the content of the collection could be associated with;  
-    	* dates and periods the collection may be related to.
-	3. The data model should allow for an unambiguous identification of the described collection. 
+0. The data model should allow descriptions of digital AND physical collections. 
+0. The description should offer general descriptive information concerning the content of the collection or the collection's items, such as:  
+* topics/subjects which are covered by the collection;  
+* locations and regions the content of the collection could be associated with;  
+* dates and periods the collection may be related to.
+0. The data model should allow for an unambiguous identification of the described collection.
