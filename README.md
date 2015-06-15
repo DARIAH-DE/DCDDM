@@ -11,26 +11,26 @@ On the other hand, the level of detail or number of providable information depen
 To ease the workload of describing collections the DCDDM is meant to be used as a data model for applications dealing with the creation, publication and administration of collection descriptions (e.g. the DARIAH-DE Collection Registry).Likewise the DCDDM should provide sufficient guidelines to create collection descriptions independent of any tool or applications and their unforeseeable lifetime.  
 Given the broad definition of collection and the consequently many possible varieties of collections, the DCDDM has to achieve the following objectives:  
 
-0. The data model should allow descriptions of digital AND physical collections.  
+1. The data model should allow descriptions of digital AND physical collections.  
 
-0. The description should offer general descriptive information concerning the content of the collection or the collection's items, such as:
+2. The description should offer general descriptive information concerning the content of the collection or the collection's items, such as:
 
 * topics/subjects which are covered by the collection;
 * locations and regions the content of the collection could be associated with;
 * dates and periods the collection may be related to.
 
-0. The data model should allow for an unambiguous identification of the described collection.
+3. The data model should allow for an unambiguous identification of the described collection.
 
-0. The data model should allow to contextualize a collection and mark relationships:
+4. The data model should allow to contextualize a collection and mark relationships:
 
 * between collections (one collection being part of another collection);
 * between collections and agents who interact with the collection (such as owners or curators);
 
-0. Collection descriptions based on the DCDDM should encourage the exploration and usage of the described collections. Therefore the description should provide administrative information about:
+5. Collection descriptions based on the DCDDM should encourage the exploration and usage of the described collections. Therefore the description should provide administrative information about:
 
 * how to access the collection or its items;
 * possible legal restrictions concerning the possibilities to access the collection and to (re)use its items.
 
-0. If collections are made accessible online, technical metadata should be provided so that other services may gain access to the collection’s objects or the object’s metadata.
+6. If collections are made accessible online, technical metadata should be provided so that other services may gain access to the collection’s objects or the object’s metadata.
 
-0. 7. To avoid ambiguity the data model encourages the use of controlled vocabulary and normative data, unique identifiers, and syntax encoding schemes. To ensure human readability of the collection description the data model provides label-elements.
+7. To avoid ambiguity the data model encourages the use of controlled vocabulary and normative data, unique identifiers, and syntax encoding schemes. To ensure human readability of the collection description the data model provides label-elements.
