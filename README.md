@@ -14,5 +14,5 @@ Given the broad definition of collection and the consequently many possible vari
 2. The description should offer general descriptive information concerning the content of the collection or the collection's items, such as:  
 * topics/subjects which are covered by the collection;  
 * locations and regions the content of the collection could be associated with;  
-* dates and periods the collection may be related to.
+* dates and periods the collection may be related to.  
 3. The data model should allow for an unambiguous identification of the described collection.
