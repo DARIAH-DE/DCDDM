@@ -15,7 +15,7 @@
             History: Based on the Dublin Core Collection Application Profile; the DARIAH-DE Collection Registry (GUI) and an internal DARIAH-DE paper/wiki-page "DARIAH-DE Collection Level Description Application
             Profile" 
             Creator: Peter Andorfer
-            See: https://github.com/csae8092/DCDDM
+            See: https://github.com/DARIAH-DE/DCDDM
         </xs:documentation>
     </xs:annotation>
     
@@ -578,6 +578,50 @@
                 Provided values are based on DARIAH-DE suggestions.
                 To record multiple schemes, separate statements should be used.
                 The importance of each statement is expressed by the applied order, beginning with the most important one.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="itemEncodingSelfMadeScheme">
+        <xs:annotation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model"> 
+                Definition: Describes and holds an reference to some self made Schema describing the collection´s objects. 
+            </xs:documentation>
+            <xs:documentation xml:lang="en" source="dcddm Data Model">
+                Comment: Use this element for describing a e.g. MySQL schema, naming the used tables and field names in plain text and/or by providing a reference to the schema itself. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="dcddm:label" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="en" source="dcddm Data Model">
+                          Definition: Contains text describing the schema.
+                        </xs:documentation>
+                        <xs:documentation xml:lang="en" source="dcddm Data Model">
+                            Definition: Use this label to name and maybe describe the classes/collections/documents/tables/fields/elements/attributes/properties etc. of your schema.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="dcddm:linkToSchema" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation source="dcddm Data Model" xml:lang="en">
+                            Definition: A URI pointing to the schemas location. 
+                        </xs:documentation>
+                        <xs:documentation source="dcddm Data Model" xml:lang="en">
+                            Comment: The URI could point e.g. to a MySQL schema export. 
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="linkToSchema" type="xs:anyURI">
+        <xs:annotation>
+            <xs:documentation source="dcddm Data Model" xml:lang="en">
+                Definition: A URI pointing to the schemas location. 
+            </xs:documentation>
+            <xs:documentation source="dcddm Data Model" xml:lang="en">
+                Comment: The URI could point e.g. to a MySQL schema export. 
             </xs:documentation>
         </xs:annotation>
     </xs:element>
